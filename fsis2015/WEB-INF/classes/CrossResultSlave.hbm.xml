@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="CrossResultSlave"
+		table="cross_result_slave"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+        <property
+                name="uploaded"
+                column="uploaded"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="sendingWaive"
+                column="sending_waive"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="notUse"
+                column="not_use"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="noTransaction"
+                column="no_transaction"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="notMatchPeriod"
+                column="not_match_period"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="pass"
+                column="pass"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="errorMessage"
+                column="error_message"
+                type="string"
+                not-null="false"
+                length="2048"
+                />
+        <property
+                name="dsVersionId"
+                column="ds_version_id"
+                type="integer"
+                not-null="false"
+                />
+
+        <many-to-one
+                name="crossResultMaster"
+                column="cross_result_master_id"
+                class="CrossResultMaster"
+                not-null="false"
+                >
+        </many-to-one>
+        <many-to-one
+                name="dsTitle"
+                column="ds_title_id"
+                class="DsTitle"
+                not-null="false"
+                >
+        </many-to-one>
+
+	</class>
+</hibernate-mapping>

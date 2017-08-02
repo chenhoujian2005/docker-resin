@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="ValidationRule"
+		table="validation_rule"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="code"
+			column="code"
+			type="string"
+			not-null="false"
+			length="16"
+		/>
+		<property
+			name="description"
+			column="description"
+			type="string"
+			not-null="false"
+			length="1024"
+		/>
+
+<many-to-one
+                name="masterDsTitle"
+                column="master_ds_title_id"
+                class="DsTitle"
+                not-null="false"
+                >
+        </many-to-one>
+        <many-to-one
+                name="slaveDsTitle"
+                column="slave_ds_title_id"
+                class="DsTitle"
+                not-null="false"
+                >
+        </many-to-one>
+        <property
+                name="enable"
+                column="enable"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+          		<property
+			name="validationType"
+			column="validation_type"
+			type="string"
+			not-null="false"
+			length="1024"
+		/>
+	</class>	
+</hibernate-mapping>

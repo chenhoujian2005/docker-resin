@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="DefinedDataDetail"
+		table="defined_data_detail"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+        <many-to-one
+			name="dsTitle"
+			column="ds_title_id"
+			class="DsTitle"
+			not-null="false"
+		>
+		</many-to-one>
+        <many-to-one
+			name="definedData"
+			column="defined_data_id"
+			class="DefinedData"
+			not-null="false"
+		>
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

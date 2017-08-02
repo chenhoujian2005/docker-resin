@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="FrequencyUnstructureLog"
+		table="frequency_unstructure_log"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="frequency"
+			column="frequency"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="dueday"
+			column="dueday"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+        <property
+                name="kpi"
+                column="kpi"
+                type="java.lang.Boolean"
+                not-null="false"
+               />
+        <property
+                name="unstructureTitleId"
+                column="unstructure_title_id"
+                type="integer"
+                not-null="true"
+                />
+
+		<many-to-one
+			name="frequencyUnstructureMainLog"
+			column="frequency_unstructure_main_log_id"
+			class="FrequencyUnstructureMainLog"
+			not-null="false"
+		/>
+		<!--<many-to-one-->
+			<!--name="unstructureTitle"-->
+			<!--column="unstructure_title_id"-->
+			<!--class="UnstructureTitle"-->
+			<!--not-null="false"-->
+		<!-->-->
+		<!--</many-to-one>-->
+	
+
+		<set name="frequencyUnstructureDetailsLog" inverse="true">
+			<key column="id"/>
+			<one-to-many class="FrequencyUnstructureDetailLog"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

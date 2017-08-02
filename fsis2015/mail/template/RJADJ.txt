@@ -1,0 +1,8 @@
+แจ้งผล Reject Dataset (Reject Adjust)<br/>
+<br/>
+Sfi             : #sfiName<br/>
+Dataset Name    : #datasetName<br/>
+Dataset Date    : #datasetDate<br/>
+Reject Date     : #rejectDate<br/>
+Reject By       : #rejectBy<br/>
+Reject Reason   : #rejectReason<br/>

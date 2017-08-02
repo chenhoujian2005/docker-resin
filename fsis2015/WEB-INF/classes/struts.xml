@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="false"/>
+
+    <constant name="struts2.sslplugin.httpPort" value="80"/>
+    <constant name="struts2.sslplugin.httpsPort" value="443"/>
+
+    <constant name="struts.multipart.maxSize" value="900000000"/>
+
+    <package name="account" extends="struts-default" namespace="/account">
+        <!--<package name="account" extends="ssl-default" namespace="/account">-->
+        <!--<interceptors>-->
+        <!--<interceptor name="validation" class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>-->
+        <!--<interceptor-stack name="SecureStack">-->
+        <!--<interceptor-ref name="secure">-->
+        <!--<param name="useAnnotations">false</param>-->
+        <!--</interceptor-ref>-->
+        <!--<interceptor-ref name="defaultStack"/>-->
+        <!--<interceptor-ref name="validation"/>-->
+        <!--</interceptor-stack>-->
+        <!--</interceptors>-->
+
+        <action name="login" class="th.go.mof.fpo.account.LoginAction">
+            <result name="input">/account/login2014.jsp</result>
+            <result type="redirectAction">../home/main</result>
+        </action>
+
+        <action name="logout" class="th.go.mof.fpo.account.LogoutAction">
+            <result type="redirectAction">login</result>
+        </action>
+    </package>
+
+    <package name="home" namespace="/home" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="home" class="th.go.mof.fpo.home.HomeAction">
+            <result>/home/home.jsp</result>
+        </action>
+        <action name="main" class="th.go.mof.fpo.menu.MainAction">
+            <result>/menu/main_total.jsp</result>
+        </action>
+    </package>
+
+    <package name="news" namespace="/news" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="news_information" class="th.go.mof.fpo.news.NewsInformationAction">
+            <result>/news/news_information.jsp</result>
+        </action>
+
+        <action name="news_information_detail" class="th.go.mof.fpo.news.NewsInformationDetailAction">
+            <result>/news/news_information_detail.jsp</result>
+            <result name="view">/news/news_information_view.jsp</result>
+            <result name="input">/news/news_information_detail.jsp</result>
+            <result name="save" type="redirectAction">news_information</result>
+            <result name="back" type="redirectAction">news_information</result>
+        </action>
+    </package>
+
+    <package name="user" namespace="/user" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="user_management" class="th.go.mof.fpo.user.UserManagementAction">
+            <result name="input">/user/user_management.jsp</result>
+            <result name="add" type="redirectAction">user_management_detail</result>
+            <result type="redirectAction">user_management</result>
+        </action>
+        <action name="user_management_detail" class="th.go.mof.fpo.user.UserManagementDetailAction">
+            <result name="input">/user/user_management_detail.jsp</result>
+            <result name="back" type="redirectAction">user_management</result>
+            <result type="redirectAction">user_management</result>
+        </action>
+        <action name="user_management_dataRight" class="th.go.mof.fpo.user.UserManagementDataRightAction">
+            <result name="input">/user/user_management_dataRight.jsp</result>
+            <result name="back" type="redirectAction">user_management</result>
+            <result type="redirectAction">user_management</result>
+        </action>
+        <action name="user_management_dataRightUnStructured" class="th.go.mof.fpo.user.UserManagementDataRightUnStructuredAction">
+            <result name="input">/user/user_management_dataRightUnStructured.jsp</result>
+            <result name="back" type="redirectAction">user_management</result>
+            <result type="redirectAction">user_management</result>
+        </action>
+    </package>
+
+    <package name="sfis" namespace="/sfis" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="branch_code" class="th.go.mof.fpo.sfis.BranchCodeAction">
+            <result>/sfis/branch_code.jsp</result>
+            <result name="delete" type="redirectAction">branch_code</result>
+        </action>
+
+        <action name="branch_code_detail" class="th.go.mof.fpo.sfis.BranchCodeDetailAction">
+            <result>/sfis/branch_code_detail.jsp</result>
+            <result name="save" type="redirectAction">branch_code</result>
+            <result name="back" type="redirectAction">branch_code</result>
+        </action>
+
+        <action name="branch_code_show_detail" class="th.go.mof.fpo.sfis.BranchCodeShowDetailAction">
+            <result>/sfis/branch_code_show_detail.jsp</result>
+            <result name="back" type="redirectAction">branch_code</result>
+        </action>
+
+        <action name="branch_code_download" class="th.go.mof.fpo.sfis.BranchCodeDownloadAction" method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename="SFIs_Branch.xls"</param>
+            </result>
+        </action>
+
+        <action name="sfi_management" class="th.go.mof.fpo.sfis.SfiManagementAction">
+            <result>/sfis/sfi_management.jsp</result>
+            <result name="delete" type="redirectAction">sfi_management</result>
+        </action>
+        <action name="sfi_management_detail" class="th.go.mof.fpo.sfis.SfiManagementDetailAction">
+            <result>/sfis/sfi_management_detail.jsp</result>
+            <result name="back" type="redirectAction">sfi_management</result>
+        </action>
+    </package>
+
+    <package name="category" namespace="/category" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="structured_dataset" class="th.go.mof.fpo.category.StructuredDatasetAction">
+            <result>/category/structured_dataset.jsp</result>
+        </action>
+        <action name="structured_dataset_group" class="th.go.mof.fpo.category.StructuredDatasetGroupAction">
+            <result>/category/structured_dataset_group.jsp</result>
+            <result name="back" type="redirectAction">structured_dataset</result>
+        </action>
+        <action name="structured_dataset_title" class="th.go.mof.fpo.category.StructuredDatasetTitleAction">
+            <result>/category/structured_dataset_title.jsp</result>
+            <result name="back" type="redirectAction">structured_dataset</result>
+        </action>
+        <action name="structured_dataset_sub_title" class="th.go.mof.fpo.category.StructuredDatasetSubTitleAction">
+            <result>/category/structured_dataset_sub_title.jsp</result>
+            <result name="back" type="redirectAction">structured_dataset</result>
+        </action>
+        <action name="structured_dataset_version" class="th.go.mof.fpo.category.StructuredDatasetVersionAction">
+            <result>/category/structured_dataset_version.jsp</result>
+            <result name="back" type="redirectAction">structured_dataset</result>
+        </action>
+        <action name="classification" class="th.go.mof.fpo.category.ClassificationAction">
+            <result>/category/classification.jsp</result>
+            <result name="input">/category/classification.jsp</result>
+            <result name="delete" type="redirectAction">classification</result>
+            <result name="back" type="redirectAction">classification_version</result>
+        </action>
+        <action name="classification_detail" class="th.go.mof.fpo.category.ClassificationDetailAction">
+            <result>/category/classification_detail.jsp</result>
+            <result name="back" type="redirectAction">classification</result>
+        </action>
+        <action name="classification_upload" class="th.go.mof.fpo.category.ClassificationUploadAction">
+            <result>/category/classification_upload.jsp</result>
+            <result name="save" type="redirectAction">classification</result>
+            <result name="error">/category/classification_upload.jsp</result>
+        </action>
+
+        <action name="download_classification_item" class="th.go.mof.fpo.category.DownloadClassificationItem"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename="Classification_item.xls"</param>
+            </result>
+        </action>
+
+        <action name="classification_version_download"
+                class="th.go.mof.fpo.category.ClassificationVersionDownloadAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+
+        <action name="classification_version" class="th.go.mof.fpo.category.ClassificationVersionAction">
+            <result>/category/classification_version.jsp</result>
+            <result name="add" type="redirectAction">classification_version_detail</result>
+            <result name="delete" type="redirectAction">classification_version</result>
+            <result name="searchItem" type="redirectAction">search_classification_item</result>
+        </action>
+        <action name="classification_version_detail" class="th.go.mof.fpo.category.ClassificationVersionDetailAction">
+            <result>/category/classification_version_detail.jsp</result>
+            <result name="save" type="redirectAction">classification_version</result>
+            <result name="back" type="redirectAction">classification_version</result>
+        </action>
+        <action name="classification_item" class="th.go.mof.fpo.category.ClassificationItemAction">
+            <result>/category/classification_item.jsp</result>
+            <result name="back" type="redirectAction">classification_detail</result>
+            <result name="save" type="redirectAction">isic_version</result>
+        </action>
+        <action name="classification_detail_view" class="th.go.mof.fpo.category.ClassificationDetailViewAction">
+            <result>/category/classification_detail_view.jsp</result>
+            <result name="back" type="redirectAction">classification</result>
+        </action>
+        <action name="classification_item_view" class="th.go.mof.fpo.category.ClassificationItemViewAction">
+            <result>/category/classification_item_view.jsp</result>
+            <result name="save" type="redirectAction">classification_detail_view</result>
+            <result name="back" type="redirectAction">classification_detail_view</result>
+        </action>
+
+        <action name="isic_version" class="th.go.mof.fpo.category.ISICVersionAction">
+            <result>/category/isic_version.jsp</result>
+            <result name="add" type="redirectAction">isic_version_detail</result>
+            <result name="delete" type="redirectAction">isic_version</result>
+            <result name="searchItem" type="redirectAction">search_isic_item</result>
+        </action>
+        <action name="isic_version_detail" class="th.go.mof.fpo.category.ISICVersionDetailAction">
+            <result>/category/isic_version_detail.jsp</result>
+            <result name="save" type="redirectAction">isic_version</result>
+            <result name="back" type="redirectAction">isic_version</result>
+        </action>
+
+        <action name="isic_version_download"
+                class="th.go.mof.fpo.category.IsicVersionDownloadAction" method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="isic_detail_view" class="th.go.mof.fpo.category.ISICDetailViewAction">
+            <result>/category/isic_detail_view.jsp</result>
+            <result name="delete" type="redirectAction">isic_detail_view</result>
+            <result name="back" type="redirectAction">isic_version</result>
+        </action>
+        <action name="isic_detail_addItem" class="th.go.mof.fpo.category.ISICDetailItemAction">
+            <result>/category/isic_detail_addItem.jsp</result>
+            <result name="save" type="redirectAction">isic_detail_view</result>
+            <result name="back" type="redirectAction">isic_detail_view</result>
+            <result name="error">/category/isic_detail_addItem.jsp</result>
+        </action>
+
+        <action name="isic_upload" class="th.go.mof.fpo.category.ISICCodeAction">
+            <result>/category/isic_code.jsp</result>
+            <result name="save" type="redirectAction">isic_detail_view</result>
+            <result name="fail">/category/isic_code.jsp</result>
+            <result name="back" type="redirectAction">isic_detail_view</result>
+        </action>
+        <action name="search_isic_item" class="th.go.mof.fpo.category.SearchIsicItemAction">
+            <result>/category/search_isic_item.jsp</result>
+            <result name="back" type="redirectAction">isic_version</result>
+         </action>
+        <action name="search_classification_item" class="th.go.mof.fpo.category.SearchClassificationItemAction">
+            <result>/category/search_classification_item.jsp</result>
+             <result name="back" type="redirectAction">classification_version</result>
+        </action>
+
+        <action name="government_agency_code" class="th.go.mof.fpo.category.GrovernmentAgencyCodeAction">
+            <result>/category/government_agency_code.jsp</result>
+            <result name="add" type="redirectAction">government_agency_code_detail</result>
+        </action>
+        <action name="government_agency_code_detail" class="th.go.mof.fpo.category.GrovernmentAgencyCodeDetailAction">
+            <result>/category/government_agency_code_detail.jsp</result>
+            <result name="back" type="redirectAction">government_agency_code</result>
+        </action>
+        <action name="government_agency_code_title" class="th.go.mof.fpo.category.GovernmentAgencyCodeTitleAction">
+            <result>/category/government_agency_code_title.jsp</result>
+            <result name="back" type="redirectAction">government_agency_code</result>
+        </action>
+        <action name="government_agency_code_sub_title" class="th.go.mof.fpo.category.GovernmentAgencyCodeSubTitleAction">
+            <result>/category/government_agency_code_sub_title.jsp</result>
+            <result name="back" type="redirectAction">government_agency_code</result>
+        </action>
+        <action name="report_type" class="th.go.mof.fpo.category.ReportTypeAction">
+            <result>/category/report_type.jsp</result>
+            <result name="add" type="redirectAction">report_type_detail</result>
+            <result name="input">/category/report_type.jsp</result>
+        </action>
+        <action name="report_type_detail" class="th.go.mof.fpo.category.ReportTypeDetailAction">
+            <result>/category/report_type_detail.jsp</result>
+            <result name="input">/category/report_type_detail.jsp</result>
+            <result name="back" type="redirectAction">report_type</result>
+        </action>
+        <!--Unstructured DataSet-->
+       <action name="unstructure_version" class="th.go.mof.fpo.category.UnstructureVersionAction">
+            <result>/category/unstructure_version.jsp</result>
+            <result name="add" type="redirectAction">unstructure_version_detail</result>
+            <result name="delete" type="redirectAction">unstructure_version</result>
+            <result name="input">/category/unstructure_version.jsp</result>
+        </action>
+        <action name="unstructure_version_detail" class="th.go.mof.fpo.category.UnstructureVersionDetailAction">
+            <result>/category/unstructure_version_detail.jsp</result>
+            <result name="save" type="redirectAction">unstructure_version</result>
+            <result name="back" type="redirectAction">unstructure_version</result>
+        </action>
+        <action name="unstructured_dataset" class="th.go.mof.fpo.category.UnstructuredDatasetAction">
+            <result>/category/unstructured_dataset.jsp</result>
+            <result name="back" type="redirectAction">unstructure_version</result>
+        </action>
+        <action name="move_unstructured_dataset" class="th.go.mof.fpo.category.MoveUnstructuredDatasetAction">
+            <result>/category/move_unstructured_dataset.jsp</result>
+            <result name="back" type="redirectAction">unstructure_version</result>
+        </action>
+        <action name="move_unstructured_dataset_from" method="search" class="th.go.mof.fpo.category.MoveUnstructuredDatasetAction">
+            <result>/category/move_unstructured_dataset.jsp</result>
+            <!--<result name="save" type="redirectAction">move_file_unstructured_dataset</result>-->
+        </action>
+        <action name="move_unstructured_dataset_to" method="search_to" class="th.go.mof.fpo.category.MoveUnstructuredDatasetAction">
+            <result>/category/move_unstructured_dataset.jsp</result>
+            <!--<result name="save" type="redirectAction">move_file_unstructured_dataset</result>-->
+        </action>
+        <action name="unstructured_dataset_group" class="th.go.mof.fpo.category.UnstructuredDatasetGroupAction">
+        <result>/category/unstructured_dataset_group.jsp</result>
+        <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+        <action name="unstructured_dataset_title" class="th.go.mof.fpo.category.UnstructuredDatasetTitleAction">
+            <result>/category/unstructured_dataset_title.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+        <action name="unstructured_dataset_sub_title" class="th.go.mof.fpo.category.UnstructuredDatasetSubTitleAction">
+            <result>/category/unstructured_dataset_sub_title.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+        <action name="unstructured_dataset_sub_title2"
+                class="th.go.mof.fpo.category.UnstructuredDatasetSubTitle2Action">
+            <result>/category/unstructured_dataset_sub_title2.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+        <action name="unstructured_dataset_sub_title3"
+                class="th.go.mof.fpo.category.UnstructuredDatasetSubTitle3Action">
+            <result>/category/unstructured_dataset_sub_title3.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+
+        <action name="unstructured_dataset_sub_title4"
+                class="th.go.mof.fpo.category.UnstructuredDatasetSubTitle4Action">
+            <result>/category/unstructured_dataset_sub_title4.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+
+        <action name="unstructured_dataset_sub_title5"
+                class="th.go.mof.fpo.category.UnstructuredDatasetSubTitle5Action">
+            <result>/category/unstructured_dataset_sub_title5.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+
+        <action name="unstructured_dataset_sub_title6"
+                class="th.go.mof.fpo.category.UnstructuredDatasetSubTitle6Action">
+            <result>/category/unstructured_dataset_sub_title6.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+        <action name="unstructured_dataset_sub_title7"
+                class="th.go.mof.fpo.category.UnstructuredDatasetSubTitle7Action">
+            <result>/category/unstructured_dataset_sub_title7.jsp</result>
+            <result name="back" type="redirectAction">unstructured_dataset</result>
+        </action>
+        <action name="cross_validation" class="th.go.mof.fpo.category.CrossValidationAction">
+            <result>/category/cross_validation.jsp</result>
+            <result name="delete" type="redirectAction">cross_validation</result>
+        </action>
+        <action name="move_file_unstructured_dataset" class="th.go.mof.fpo.category.MoveFileUnstructuredDatasetAction">
+            <result>/category/move_file_unstructured_dataset.jsp</result>
+            <!--<result name="save" type="redirectAction">move_file_unstructured_dataset</result>-->
+        </action>
+        <action name="move_file_unstructured_dataset_from" method="search" class="th.go.mof.fpo.category.MoveFileUnstructuredDatasetAction">
+            <result>/category/move_file_unstructured_dataset.jsp</result>
+            <!--<result name="save" type="redirectAction">move_file_unstructured_dataset</result>-->
+        </action>
+        <action name="move_file_unstructured_dataset_to" method="search_to" class="th.go.mof.fpo.category.MoveFileUnstructuredDatasetAction">
+            <result>/category/move_file_unstructured_dataset.jsp</result>
+            <!--<result name="save" type="redirectAction">move_file_unstructured_dataset</result>-->
+        </action>
+        <action name="rules_validation" class="th.go.mof.fpo.category.RulesValidationAction">
+            <result>/category/rules_validation.jsp</result>
+            <result name="reload" type="redirectAction">rules_validation</result>
+        </action>
+        <action name="rules_validation_detail" class="th.go.mof.fpo.category.RulesValidationDetailAction">
+            <result>/category/rules_validation_detail.jsp</result>
+            <result name="input">/category/rules_validation_detail.jsp</result>
+            <result name="back" type="redirectAction">rules_validation</result>
+        </action>
+
+        <action name="publish_document" class="th.go.mof.fpo.category.PublishDocumentAction">
+            <result>/category/publish_document.jsp</result>
+            <result name="add" type="redirectAction">publish_document_detail</result>
+            <result name="delete" type="redirectAction">publish_document</result>
+        </action>
+        <action name="publish_document_detail" class="th.go.mof.fpo.category.PublishDocumentDetailAction">
+            <result>/category/publish_document_detail.jsp</result>
+            <result name="save" type="redirectAction">publish_document</result>
+            <result name="back" type="redirectAction">publish_document</result>
+        </action>
+    </package>
+
+    <package name="dataset" namespace="/dataset" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="submit_structured" class="th.go.mof.fpo.dataset.SubmitStructuredAction">
+            <result name="input">/dataset/submit_structured.jsp</result>
+            <result name="show_status" type="redirect">dataset_upload_status.jsp?to=submit_structured.action</result>
+            <result name="show_status_to_other" type="redirect">dataset_upload_status.jsp?to=submit_adjust.action
+            </result>
+        </action>
+        <action name="view_submitted_structured" class="th.go.mof.fpo.dataset.ViewSubmittedStructuredAction">
+            <result name="input">/dataset/view_submitted_structured.jsp</result>
+            <result name="success">/dataset/view_submitted_structured.jsp</result>
+        </action>
+        <action name="submit_adjust" class="th.go.mof.fpo.dataset.SubmitAdjustAction">
+            <result name="input">/dataset/submit_adjust.jsp</result>
+            <result name="show_status" type="redirect">dataset_upload_status.jsp?to=submit_adjust.action</result>
+            <result name="show_status_to_other" type="redirect">dataset_upload_status.jsp?to=submit_structured.action
+            </result>
+        </action>
+        <action name="view_submitted_adjust" class="th.go.mof.fpo.dataset.ViewSubmittedAdjustAction">
+            <result name="input">/dataset/view_submitted_adjust.jsp</result>
+            <result name="success">/dataset/view_submitted_adjust.jsp</result>
+        </action>
+
+        <action name="submit_unstructured" class="th.go.mof.fpo.dataset.SubmitUnstructuredAction">
+            <result name="input">/dataset/submit_unstructured.jsp</result>
+            <result name="show_status" type="redirect">dataset_upload_status.jsp?to=submit_unstructured.action</result>
+        </action>
+        <action name="view_submitted_unstructured" class="th.go.mof.fpo.dataset.ViewSubmittedUnstructuredAction">
+            <result name="input">/dataset/view_submitted_unstructured.jsp</result>
+            <result name="success">/dataset/view_submitted_unstructured.jsp</result>
+        </action>
+        <action name="document_detail" class="th.go.mof.fpo.dataset.DocumentDetailAction">
+            <result>/dataset/document_detail.jsp</result>
+        </action>
+        <action name="document_unstructured_detail" class="th.go.mof.fpo.dataset.DocumentUnstructuredDetailAction">
+            <result>/dataset/document_unstructured_detail.jsp</result>
+         </action>
+        <action name="reject_reason" class="th.go.mof.fpo.dataset.RejectReasonAction">
+            <result name="input">/dataset/reject_reason.jsp</result>
+            <result type="redirect">${toPage}</result>
+        </action>
+        <action name="reject_reason_unstructured" class="th.go.mof.fpo.dataset.RejectReasonUnstructuredAction">
+            <result name="input">/dataset/reject_reason_unstructured.jsp</result>
+            <result type="redirect">${toPage}</result>
+        </action>
+        <action name="cross_result" class="th.go.mof.fpo.dataset.CrossResultAction">
+            <result>/dataset/cross_result.jsp</result>
+        </action>
+    </package>
+
+    <package name="logs" namespace="/logs" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="structured_transfer" class="th.go.mof.fpo.logs.StructuredTransferAction">
+            <result>/logs/structured_transfer.jsp</result>
+        </action>
+
+        <action name="file_transfer_detail" class="th.go.mof.fpo.logs.FileTransferDetailAction">
+            <result>/logs/file_transfer_detail.jsp</result>
+        </action>
+
+        <action name="adjust_structured_transfer" class="th.go.mof.fpo.logs.AdjustStructuredTransferAction">
+            <result>/logs/adjust_structured_transfer.jsp</result>
+        </action>
+
+        <action name="activity" class="th.go.mof.fpo.logs.ActivityAction">
+            <result>/logs/activity.jsp</result>
+        </action>
+
+        <action name="document_status_log" class="th.go.mof.fpo.logs.DocumentStatusLogAction">
+            <result>/logs/document_status_log.jsp</result>
+        </action>
+        <action name="document_status_log_unstructured" class="th.go.mof.fpo.logs.DocumentStatusLogUnStructuredNewAction">
+        <!--<result>/logs/document_status_log_unstructured_new.jsp</result>-->
+        <result name="input">/logs/document_status_log_unstructured_new.jsp</result>
+        <result name="success">/logs/document_status_log_unstructured_new.jsp</result>
+    </action>
+        <action name="no_transaction_log" class="th.go.mof.fpo.logs.noTransactionLogAction">
+            <result>/logs/no_transaction_log.jsp</result>
+        </action>
+        <action name="validation_rule_log" class="th.go.mof.fpo.logs.ValidationRuleLogAction">
+            <result>/logs/validation_rule_log.jsp</result>
+        </action>
+        <action name="defined_data_detail_log" class="th.go.mof.fpo.logs.DefinedDataDetailLogAction">
+            <result>/logs/defined_data_detail_log.jsp</result>
+        </action>
+        <action name="report_type_log" class="th.go.mof.fpo.logs.ReportTypeLogAction">
+            <result>/logs/report_type_log.jsp</result>
+        </action>
+        <action name="sending_waive_log" class="th.go.mof.fpo.logs.SendingWaiveLogAction">
+            <result>/logs/sending_waive_log.jsp</result>
+        </action>
+        <action name="structured_dataset_version_log" class="th.go.mof.fpo.logs.StructuredDatasetVersionLogAction">
+            <result>/logs/structured_dataset_version_log.jsp</result>
+        </action>
+        <action name="cross_validation_log" class="th.go.mof.fpo.logs.CrossValidationLogAction">
+            <result>/logs/cross_validation_log.jsp</result>
+        </action>
+        <action name="frequency_config_detail_log" class="th.go.mof.fpo.logs.FrequencyConfigDetailLogAction">
+            <result>/logs/frequency_config_detail_log.jsp</result>
+        </action>
+    </package>
+
+    <package name="report" namespace="/report" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+        <action name="executive_report" class="th.go.mof.fpo.report.ExecutiveReportAction">
+            <result>/report/executive_report.jsp</result>
+            <result name="add" type="redirectAction">executive_report_detail</result>
+        </action>
+        <action name="executive_report_detail" class="th.go.mof.fpo.report.ExecutiveReportDetailAction">
+            <result>/report/executive_report_detail.jsp</result>
+            <result name="back" type="redirectAction">executive_report</result>
+        </action>
+
+        <action name="kpi_report_structured" class="th.go.mof.fpo.report.KpiReportStructuredNewAction">
+            <result>/report/kpi_report_structured.jsp</result>
+        </action>
+
+        <action name="kpi_report_structured_convert_to_excel"
+                class="th.go.mof.fpo.report.KpiReportStructuredConvertToExcelAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="kpi_report_structured_by_search_convert_to_excel"
+                class="th.go.mof.fpo.report.KpiReportStructuredBySearchConvertToExcelAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="kpi_report_unstructured_convert_to_excel"
+                class="th.go.mof.fpo.report.KpiReportUnStructuredConvertToExcelAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="monitoring_report_convert_to_excel"
+                class="th.go.mof.fpo.report.MonitoringReportConvertToExcelAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="monitoring_unstructured_convert_to_excel"
+                class="th.go.mof.fpo.report.MonitoringUnStructuredConvertToExcelAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="kpi_report_structured_by_search" class="th.go.mof.fpo.report.KpiReportStructuredBySearchNewAction">
+            <result name="input">/report/kpi_report_structured_by_search_new.jsp</result>
+            <result name="success">/report/kpi_report_structured_by_search_new.jsp</result>
+
+        </action>
+        <action name="kpi_report_structured_summary" class="th.go.mof.fpo.report.KpiReportStructuredSummaryAction">
+            <result>/report/kpi_report_structured_summary.jsp</result>
+        </action>
+        <action name="kpi_report_unstructured" class="th.go.mof.fpo.report.KpiReportUnstructuredNewAction">
+            <result>/report/kpi_report_unstructured_new.jsp</result>
+        </action>
+        <action name="kpi_defined_dataset" class="th.go.mof.fpo.report.KpiDefinedDatasetAction">
+            <result>/report/kpi_defined_dataset.jsp</result>
+        </action>
+        <action name="kpi_defined_dataset_detail" class="th.go.mof.fpo.report.KpiDefinedDatasetDetailAction">
+            <result>/report/kpi_defined_dataset_detail.jsp</result>
+            <result name="back" type="redirectAction">kpi_defined_dataset</result>
+        </action>
+        <action name="monitoring_report" class="th.go.mof.fpo.report.MonitoringReportAction">
+            <result>/report/monitoring_report.jsp</result>
+        </action>
+        <action name="monitoring_unstructured" class="th.go.mof.fpo.report.MonitoringUnstructuredAction">
+            <result>/report/monitoring_unstructured.jsp</result>
+        </action>
+        <action name="export_log_report" class="th.go.mof.fpo.report.ExportLogReportAction">
+            <result>/report/export_log_report.jsp</result>
+        </action>
+        <action name="export_log_report_convert_to_excel" class="th.go.mof.fpo.report.ExportLogReportConvertToExcelAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="export" namespace="/export" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="defined_data" class="th.go.mof.fpo.export.DefinedDataAction">
+            <result>/export/defined_data.jsp</result>
+        </action>
+        <action name="defined_data_detail" class="th.go.mof.fpo.export.DefinedDataDetailAction">
+            <result>/export/defined_data_detail.jsp</result>
+            <result name="back" type="redirectAction">defined_data</result>
+        </action>
+        <action name="defined_data_detail_view" class="th.go.mof.fpo.export.DefinedDataDetailAction">
+            <result>/export/defined_data_detail_view.jsp</result>
+            <result name="back" type="redirectAction">defined_data</result>
+        </action>
+        <action name="export_data" class="th.go.mof.fpo.export.ExportDataAction">
+            <result>/export/export_data.jsp</result>
+        </action>
+    </package>
+
+    <package name="configuration" namespace="/configuration" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="system" class="th.go.mof.fpo.configuration.SystemAction">
+            <result name="input">/configuration/system.jsp</result>
+            <result name="add" type="redirectAction">system_detail</result>
+            <result name="reload" type="redirectAction">system</result>
+        </action>
+        <action name="system_detail" class="th.go.mof.fpo.configuration.SystemDetailAction">
+            <result name="input">/configuration/system_detail.jsp</result>
+            <result name="back" type="redirectAction">system</result>
+        </action>
+
+        <!--Frequency Structured-->
+
+        <action name="frequency_config" class="th.go.mof.fpo.configuration.FrequencyConfigAction">
+            <result>/configuration/frequency_config.jsp</result>
+            <result name="delete" type="redirectAction">frequency_config</result>
+        </action>
+        <action name="frequency_config_detail" class="th.go.mof.fpo.configuration.FrequencyConfigDetailAction">
+            <result>/configuration/frequency_config_detail.jsp</result>
+            <result name="back" type="redirectAction">frequency_config</result>
+        </action>
+        <action name="frequency_config_detail_view" class="th.go.mof.fpo.configuration.FrequencyConfigDetailAction">
+            <result>/configuration/frequency_config_detail_view.jsp</result>
+            <result name="back" type="redirectAction">frequency_config</result>
+        </action>
+
+        <action name="frequency_config_fortnightly" class="th.go.mof.fpo.configuration.FrequencyConfigFortnightlyAction">
+            <result>/configuration/frequency_config_fortnightly.jsp</result>
+        </action>
+        <action name="frequency_config_fortnightlyPKB" class="th.go.mof.fpo.configuration.FrequencyConfigFortnightlyPKBAction">
+            <result>/configuration/frequency_config_fortnightlyPKB.jsp</result>
+        </action>
+        <action name="frequency_config_fortnightlyPCX" class="th.go.mof.fpo.configuration.FrequencyConfigFortnightlyPCXAction">
+            <result>/configuration/frequency_config_fortnightlyPCX.jsp</result>
+        </action>
+        <action name="frequency_config_fortnightlyPCS" class="th.go.mof.fpo.configuration.FrequencyConfigFortnightlyPCSAction">
+            <result>/configuration/frequency_config_fortnightlyPCS.jsp</result>
+        </action>
+
+        <!--Frequency UnStructured-->
+        <action name="frequency_unstructured" class="th.go.mof.fpo.configuration.FrequencyUnstructuredAction">
+            <result>/configuration/frequency_unstructured.jsp</result>
+            <result name="delete" type="redirectAction">frequency_unstructured</result>
+        </action>
+        <action name="frequency_unstructure_detail" class="th.go.mof.fpo.configuration.FrequencyUnstructureDetailAction">
+            <result>/configuration/frequency_unstructure_detail.jsp</result>
+            <result name="back" type="redirectAction">frequency_unstructured</result>
+        </action>
+        <action name="frequency_unstructure_detail_view" class="th.go.mof.fpo.configuration.FrequencyUnstructureDetailAction">
+            <result>/configuration/frequency_unstructure_detail_view.jsp</result>
+            <result name="back" type="redirectAction">frequency_unstructured</result>
+        </action>
+
+        <action name="sending_waive" class="th.go.mof.fpo.configuration.SendingWaiveAction">
+            <result>/configuration/sending_waive.jsp</result>
+        </action>
+        <action name="sending_waive_detail" class="th.go.mof.fpo.configuration.SendingWaiveDetailAction">
+            <result>/configuration/sending_waive_detail.jsp</result>
+            <result name="back" type="redirectAction">sending_waive</result>
+        </action>
+
+        <action name="sending_waive_unstructure" class="th.go.mof.fpo.configuration.SendingWaiveUnstructureAction">
+            <result>/configuration/sending_waive_unstructure.jsp</result>
+            <result name="delete" type="redirectAction">sending_waive_unstructure</result>
+        </action>
+        <action name="sending_waive_unstructure_detail" class="th.go.mof.fpo.configuration.SendingWaiveUnstructureDetailAction">
+            <result>/configuration/sending_waive_unstructure_detail.jsp</result>
+            <result name="back" type="redirectAction">sending_waive_unstructure</result>
+        </action>
+
+        <action name="official_holiday" class="th.go.mof.fpo.configuration.OfficialHolidayAction">
+            <result>/configuration/official_holiday.jsp</result>
+        </action>
+        <action name="official_holiday_detail" class="th.go.mof.fpo.configuration.OfficialHolidayDetailAction">
+            <result>/configuration/official_holiday_detail.jsp</result>
+            <result name="back" type="redirectAction">official_holiday</result>
+        </action>
+
+        <action name="no_transaction" class="th.go.mof.fpo.configuration.NoTransactionAction">
+            <result>/configuration/no_transaction.jsp</result>
+        </action>
+        <action name="no_transaction_detail" class="th.go.mof.fpo.configuration.NoTransactionDetailAction">
+            <result>/configuration/no_transaction_detail.jsp</result>
+            <result name="back" type="redirectAction">no_transaction</result>
+        </action>
+    </package>
+
+    <package name="defectLog" namespace="/defectLog" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+        <action name="defect_log" class="th.go.mof.fpo.defectLog.defectLogAction">
+            <result>/defectLog/defect_log.jsp</result>
+        </action>
+        <action name="defect_log_add" class="th.go.mof.fpo.defectLog.defectLogAddAction">
+            <result>/defectLog/defect_log_add.jsp</result>
+            <result name="back" type="redirectAction">defect_log</result>
+        </action>
+        <action name="defect_log_view" class="th.go.mof.fpo.defectLog.defectLogAddAction">
+            <result>/defectLog/defect_log_view.jsp</result>
+            <result name="back" type="redirectAction">defect_log</result>
+        </action>
+        <action name="defectLog_convert_to_excel"
+                class="th.go.mof.fpo.defectLog.DefectLogConvertToExcel"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <!--<action name="popup_mail" class="th.go.mof.fpo.defectLog.PopUpMailAction">-->
+            <!--<result>/defectLog/popup_mail.jsp</result>-->
+            <!--&lt;!&ndash;<result name="input" type="redirectAction">defect_log_add</result>&ndash;&gt;-->
+            <!--&lt;!&ndash;<result name="back" type="redirectAction">defect_log_add</result>&ndash;&gt;-->
+            <!--&lt;!&ndash;<result name="success" type="redirectAction">popup_mail</result>&ndash;&gt;-->
+        <!--</action>-->
+    </package>
+
+    <package name="system" namespace="/system" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+
+        <action name="change_password" class="th.go.mof.fpo.system.ChangePasswordAction">
+            <result>/system/change_password.jsp</result>
+            <result name="changed">/system/change_password_success.jsp</result>
+            <result name="input" type="redirectAction">../home/home</result>
+        </action>
+
+        <action name="help" class="th.go.mof.fpo.system.HelpAction">
+            <result>/system/help.jsp</result>
+            <result name="add" type="redirectAction">help_detail</result>
+        </action>
+        <action name="help_detail" class="th.go.mof.fpo.system.HelpDetailAction">
+            <result>/system/help_detail.jsp</result>
+            <result name="back" type="redirectAction">help</result>
+        </action>
+        <action name="question_answer_group" class="th.go.mof.fpo.system.QuestionAnswerGroupAction">
+            <result>/system/question_answer_group.jsp</result>
+            <result name="add" type="redirectAction">question_answer_group_detail</result>
+            <result name="delete" type="redirectAction">question_answer_group</result>
+        </action>
+        <action name="question_answer_group_detail" class="th.go.mof.fpo.system.QuestionAnswerGroupDetailAction">
+            <result>/system/question_answer_group_detail.jsp</result>
+            <result name="save" type="redirectAction">question_answer_group</result>
+            <result name="back" type="redirectAction">question_answer_group</result>
+        </action>
+        <action name="submit_question_answer" class="th.go.mof.fpo.system.SubmitQuestionAnswerAction">
+            <result>/system/submit_question_answer.jsp</result>
+            <result name="save" type="redirectAction">view_question_answer</result>
+            <result name="back" type="redirectAction">view_question_answer</result>
+        </action>
+        <action name="view_question_answer" class="th.go.mof.fpo.system.ViewQuestionAnswerAction">
+            <result>/system/view_question_answer.jsp</result>
+            <result name="back" type="redirectAction">submit_question_answer</result>
+            <result name="delete" type="redirectAction">view_question_answer</result>
+        </action>
+        <action name="download_question" class="th.go.mof.fpo.system.DownloadQuestionAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/x-download</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">contentDisposition</param>
+            </result>
+            <result name="error">message_status.jsp</result>
+        </action>
+    </package>
+
+
+    <package name="publish" namespace="/publish" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+        <action name="submit_publish_document" class="th.go.mof.fpo.publish.SubmitPublishDocument">
+            <result>/publish/submit_publish_document.jsp</result>
+            <result name="save" type="redirectAction">view_publish_document</result>
+        </action>
+        <action name="view_publish_document" class="th.go.mof.fpo.publish.ViewPublishDocumentAction">
+            <result>/publish/view_publish_document.jsp</result>
+            <result name="back" type="redirectAction">submit_publish_document</result>
+            <result name="delete" type="redirectAction">view_publish_document</result>
+        </action>
+        <action name="download_publish_document" class="th.go.mof.fpo.publish.DownloadPublishDocumentAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/x-download</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">contentDisposition</param>
+            </result>
+            <result name="error">message_status.jsp</result>
+        </action>
+        <action name="submit_publish_document_detail" class="th.go.mof.fpo.publish.ViewPublishDocumentDetailAction">
+            <result>/publish/view_publish_document_detail.jsp</result>
+            <result name="back" type="redirectAction">view_publish_document</result>
+        </action>
+    </package>
+    <package name="csv" namespace="/csv" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation"
+                         class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+        <action name="csv_upload_view" class="th.go.mof.fpo.csv.CsvUploadView">
+            <result>/csv/csv_upload_view.jsp</result>
+            <result name="add" type="redirectAction">csv_upload</result>
+        </action>
+        <action name="csv_upload" class="th.go.mof.fpo.csv.CsvUpload">
+            <result>/csv/csv_upload.jsp</result>
+            <result name="back" type="redirectAction">csv_upload_view</result>
+        </action>
+
+    </package>
+
+     <package name="composite" namespace="/composite" extends="struts-default">
+        <interceptors>
+            <interceptor name="validation" class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
+        </interceptors>
+        <action name="composite_rating" class="th.go.mof.fpo.composite.CompositeRating">
+            <result>/composite/composite_rating.jsp</result>
+        </action>
+        <action name="composite_rating_detail" class="th.go.mof.fpo.composite.CompositeRatingDetail">
+            <result>/composite/composite_rating_detail.jsp</result>
+            <result type="redirectAction" name="back">composite_rating</result>
+        </action>
+    </package>
+    <!--<package name="test" namespace="/test" extends="struts-default">-->
+    <!--<interceptors>-->
+    <!--<interceptor name="validation" class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>-->
+    <!--<interceptor name="servletConfigInterceptor" class="org.apache.struts2.interceptor.ServletConfigInterceptor"/>-->
+    <!--<interceptor name="myInterceptors" class="th.go.mof.fpo.interceptors.NewsInterceptors"/>-->
+    <!--</interceptors>-->
+    <!--<action name="test" class="th.go.mof.fpo.test.Test">-->
+    <!--<result>/test/test.jsp</result>-->
+    <!--</action>-->
+    <!--</package>-->
+</struts>

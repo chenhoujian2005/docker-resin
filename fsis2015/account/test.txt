@@ -1,0 +1,77 @@
+PROGRAM (DS_PVS, DS_TCS)
+VAR
+
+
+	Integer TC020001 := DS_TCS->DS_TCS_Content.ContentRecordGroup.TotalOutstandingAmount
+		WHERE (DS_TCS_Content.ContentRecordGroup.AssetClassificationType = "020001"
+		AND DS_TCS_Content.ContentRecordGroup.ArrangementType = "!018051,018052,018053,018054");
+	Integer TC020002 := DS_TCS->DS_TCS_Content.ContentRecordGroup.TotalOutstandingAmount
+	        WHERE (DS_TCS_Content.ContentRecordGroup.AssetClassificationType = "020002"
+		AND DS_TCS_Content.ContentRecordGroup.ArrangementType = "!018051,018052,018053,018054");
+	Integer TC020003 := DS_TCS->DS_TCS_Content.ContentRecordGroup.TotalOutstandingAmount
+	        WHERE (DS_TCS_Content.ContentRecordGroup.AssetClassificationType = "020003"
+		AND DS_TCS_Content.ContentRecordGroup.ArrangementType = "!018051,018052,018053,018054");
+	Integer TC020004 := DS_TCS->DS_TCS_Content.ContentRecordGroup.TotalOutstandingAmount
+	        WHERE (DS_TCS_Content.ContentRecordGroup.AssetClassificationType = "020004"
+		AND DS_TCS_Content.ContentRecordGroup.ArrangementType = "!018051,018052,018053,018054");
+	Integer TC020005 := DS_TCS->DS_TCS_Content.ContentRecordGroup.TotalOutstandingAmount
+	        WHERE (DS_TCS_Content.ContentRecordGroup.AssetClassificationType = "020005"
+		AND DS_TCS_Content.ContentRecordGroup.ArrangementType = "!018051,018052,018053,018054");
+	Integer TC020006 := DS_TCS->DS_TCS_Content.ContentRecordGroup.TotalOutstandingAmount
+	        WHERE (DS_TCS_Content.ContentRecordGroup.AssetClassificationType = "020006"
+		AND DS_TCS_Content.ContentRecordGroup.ArrangementType = "!018051,018052,018053,018054");
+
+	Integer PV020001_05 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.AssetClassificationType = "020001");
+	Integer PV020001_19 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.AssetClassificationType = "020001");
+	Integer PV020001_20 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.AssetClassificationType = "020001");
+
+	Integer PV020002_05 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.AssetClassificationType = "020002");
+	Integer PV020002_19 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.AssetClassificationType = "020002");
+	Integer PV020002_20 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.AssetClassificationType = "020002");
+
+	Integer PV020003_05 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.AssetClassificationType = "020003");
+	Integer PV020003_19 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.AssetClassificationType = "020003");
+	Integer PV020003_20 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.AssetClassificationType = "020003");
+
+	Integer PV020004_05 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.AssetClassificationType = "020004");
+	Integer PV020004_19 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.AssetClassificationType = "020004");
+	Integer PV020004_20 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.AssetClassificationType = "020004");
+
+	Integer PV020005_05 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.AssetClassificationType = "020005");
+	Integer PV020005_19 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.AssetClassificationType = "020005");
+	Integer PV020005_20 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.AssetClassificationType = "020005");
+
+	Integer PV020006_05 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960005.ProvisionSummaryItemInfo.AssetClassificationType = "020006");
+	Integer PV020006_19 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960019.ProvisionSummaryItemInfo.AssetClassificationType = "020006");
+	Integer PV020006_20 := DS_PVS_IAS->DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.Amount WHERE (DS_PVS_Content.ContentRecordGroup.ProvisionSummaryItem960020.ProvisionSummaryItemInfo.AssetClassificationType = "020006");
+
+
+BEGIN
+	RULE : PVTC
+	BEGIN
+		IF (TC020001 <> PV020001_05 + PV020001_19 + PV020001_20)
+		THEN
+		ASSERT "TCPV0001";
+
+		IF (TC020002 <> PV020002_05 + PV020002_19 + PV020002_20)
+		THEN
+		ASSERT "TCPV0002";
+
+		IF (TC020003 <> PV020003_05 + PV020003_19 + PV020003_20)
+		THEN
+		ASSERT "TCPV0003";
+
+		IF (TC020004 <> PV020004_05 + PV020004_19 + PV020004_20)
+		THEN
+		ASSERT "TCPV0004";
+
+		IF (TC020005 <> PV020005_05 + PV020005_19 + PV020005_20)
+		THEN
+		ASSERT "TCPV0005";
+
+		IF (TC020006 <> PV020006_05 + PV020006_19 + PV020006_20)
+		THEN
+		ASSERT "TCPV0006";
+
+	END;
+END;

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="FileUploadTransferLog" table="file_upload_transfer_log"
+	>
+		<meta attribute="sync-DAO">false</meta>
+
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="status"
+			column="status"
+			type="string"
+			not-null="false"
+			length="3"
+		/>
+		<property
+			name="description"
+			column="description"
+			type="string"
+			not-null="false"
+		/>
+		<property
+			name="createDate"
+			column="create_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="createBy"
+			column="create_by"
+			type="string"
+			not-null="false"
+			length="64"
+		/>
+		<many-to-one
+			name="fileUpload"
+			column="file_upload_id"
+			class="FileUpload"
+			not-null="false"
+		>
+		</many-to-one>
+
+
+	</class>	
+</hibernate-mapping>

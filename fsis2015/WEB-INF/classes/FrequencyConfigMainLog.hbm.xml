@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="FrequencyConfigMainLog"
+		table="frequency_config_main_log"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="dateFrom"
+			column="date_from"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="dateTo"
+			column="date_to"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="createDate"
+			column="create_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="createBy"
+			column="create_by"
+			type="string"
+			not-null="false"
+			length="16"
+		/>
+		<property
+			name="updateDate"
+			column="update_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="updateBy"
+			column="update_by"
+			type="string"
+			not-null="false"
+			length="16"
+		/>
+	     <property
+			name="sfi"
+			column="sfi_id"
+			type="string"
+			not-null="false"
+			length="512"
+		/>
+	    <many-to-one
+			name="activityLog"
+			column="activity_log_id"
+			class="ActivityLog"
+			not-null="false"
+		>
+		</many-to-one>
+        <many-to-one
+			name="frequencyConfigMain"
+			column="frequency_config_main_id"
+			class="FrequencyConfigMain"
+			not-null="false"
+		>
+		</many-to-one>
+		<set name="frequencyConfigsLog" inverse="true">
+			<key column="id"/>
+			<one-to-many class="FrequencyConfigLog"/>
+		</set>
+
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="PassFirst"
+		table="pass_first"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+        <property
+			name="passComplexDate"
+			column="pass_complex_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+			name="passCrossDate"
+			column="pass_cross_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+			name="datasetDate"
+			column="dataset_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+			name="createDate"
+			column="create_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+                name="dsVersionId"
+                column="ds_version_id"
+                type="integer"
+                not-null="false"
+                />
+		<many-to-one
+			name="sfi"
+			column="sfi_id"
+			class="Sfi"
+			not-null="false"
+		>
+		</many-to-one>
+		<many-to-one
+			name="dsTitle"
+			column="ds_title_id"
+			class="DsTitle"
+			not-null="false"
+		>
+		</many-to-one>
+
+
+	</class>
+</hibernate-mapping>

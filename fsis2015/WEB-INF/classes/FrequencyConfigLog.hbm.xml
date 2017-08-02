@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="FrequencyConfigLog"
+		table="frequency_config_log"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="frequency"
+			column="frequency"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="dueday"
+			column="dueday"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="alertBefore"
+			column="alert_before"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="alertAfter"
+			column="alert_after"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+        <property
+			name="alertAfterReject"
+			column="alert_after_reject"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<many-to-one
+			name="frequencyConfigMainLog"
+			column="frequency_config_main_log_id"
+			class="FrequencyConfigMainLog"
+			not-null="false"
+		>
+		</many-to-one>
+		<many-to-one
+			name="dsTitle"
+			column="ds_title_id"
+			class="DsTitle"
+			not-null="false"
+		>
+		</many-to-one>
+	
+
+		<set name="frequencyConfigDetailsLog" inverse="true">
+			<key column="id"/>
+			<one-to-many class="FrequencyConfigDetailLog"/>
+		</set>
+
+
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="DsVersion"
+            table="ds_version"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="id"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="version"
+                column="version"
+                type="string"
+                not-null="false"
+                length="16"
+                />
+        <property
+                name="manualPath"
+                column="manual_path"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="dataEntryPath"
+                column="data_entry_path"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="xsdPath"
+                column="xsd_path"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="originalManualFileName"
+                column="original_manual_file_name"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="originalDataEntryFileName"
+                column="original_data_entry_file_name"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="originalXsdFileName"
+                column="original_xsd_file_name"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="startDate"
+                column="start_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="endDate"
+                column="end_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="createDate"
+                column="create_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="createBy"
+                column="create_by"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="updateDate"
+                column="update_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="updateBy"
+                column="update_by"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="enable"
+                column="enable"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="basicValidationScript"
+                column="basic_validation_script"
+                type="string"
+                not-null="false"
+                />
+        <property
+                name="complexValidationScript"
+                column="complex_validation_script"
+                type="string"
+                not-null="false"
+                />
+
+        <many-to-one
+                name="dsTitle"
+                column="ds_title_id"
+                class="DsTitle"
+                not-null="false"
+                >
+        </many-to-one>
+
+        <set name="fileUploads" inverse="true" cascade="delete">
+            <key column="ds_version_id"/>
+            <one-to-many class="FileUpload"/>
+        </set>
+        <set name="crossValidations" inverse="true" cascade="delete">
+            <key column="ds_version_id"/>
+            <one-to-many class="CrossValidation"/>
+        </set>
+        <set name="crossResultMasters" inverse="true" cascade="delete">
+            <key column="ds_version_id"/>
+            <one-to-many class="CrossResultMaster"/>
+        </set>
+    </class>
+</hibernate-mapping>

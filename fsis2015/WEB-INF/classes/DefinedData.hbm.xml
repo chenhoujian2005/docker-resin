@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="DefinedData"
+		table="defined_data"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+        <property
+			name="sendToBot"
+			column="send_to_bot"
+			type="boolean"
+			not-null="false"
+			length="1"
+		/>
+        <property
+			name="sendToSepo"
+			column="send_to_sepo"
+			type="boolean"
+			not-null="false"
+			length="1"
+		/>
+        
+        <property
+			name="datasetDateFrom"
+			column="dataset_date_from"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+			name="datasetDateTo"
+			column="dataset_date_to"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <!--<property-->
+			<!--name="effectiveDateFrom"-->
+			<!--column="effective_date_from"-->
+			<!--type="timestamp"-->
+			<!--not-null="false"-->
+			<!--length="23"-->
+		<!--/>-->
+        <!--<property-->
+			<!--name="effectiveDateTo"-->
+			<!--column="effective_date_to"-->
+			<!--type="timestamp"-->
+			<!--not-null="false"-->
+			<!--length="23"-->
+		<!--/>-->
+        <property
+			name="statusForExport"
+			column="status_for_export"
+			type="string"
+			not-null="false"
+			length="3"
+		/>
+		<property
+			name="updateDate"
+			column="update_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="updateBy"
+			column="update_by"
+			type="string"
+			not-null="false"
+			length="16"
+		/>
+        <property
+                name="enable"
+                column="enable"
+                type="boolean"
+                not-null="true"
+                length="1"
+                />
+
+</class>	
+</hibernate-mapping>

@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+body {
+    font-family:		tahoma, helv, arial, verdana, sans-serif;
+    font-size:			14px;
+    /*color:				#1E1903;*/
+    color:				#060d68;
+    background:			#ebebeb;
+    margin:				0;
+    padding:			0;
+}
+
+#content {
+	font-family:		tahoma, helv, arial, verdana, sans-serif;
+    font-size:			14px;
+    color:				#060d68;
+    background:			#ebebeb;
+    margin:				0;
+    padding:			0;	
+    position:			relative;
+    margin:				0 auto;
+    padding:			0;
+    margin-top:			20px;
+    margin-left:		15px;
+    margin-right:		15px;
+    display:			block;
+    border-style:		solid;
+    border-width: 		2px;
+    border-color:		#ffa7ed;
+    background:			#fff;
+    padding-left:		5px;
+	padding-top: 		20px;
+	padding-bottom: 	20px;
+}
+
+#content form {
+    margin-left:		10px;
+    margin-right:		20px;
+    padding-left:		5px;
+
+}
+
+
+
+fieldset.messageinfo {
+	font-family:	arial, verdana, sans-serif;
+	font-weight:bold;
+    display:block;
+    border:#11b9cf solid 1px;
+    font-size:15px;
+    padding: 10px;
+    padding-left: 10px;
+    margin-top:10px;
+    background-color:#f0fdff;
+    color:#143277;
+}
+
+
+
+/* End Form Elements */
+
+/* Begin Table Elements */
+
+.tableresult {
+    border-left: 1px solid #C1DAD7;
+}
+
+.tableresult tr:hover th[scope=row], .tableresult tr:hover td, .tableresult tr.even:hover td
+{
+    background-color: #00b3ff;
+    color: #fff;
+}
+
+.tableresult th {
+	font-size:1em;    
+	height:10px;
+    background-color:#d0deff;
+    /*color:#535353;*/
+    color:#003e92;
+    border-top: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-right: 1px solid #C1DAD7;
+    text-align: center;
+    padding: 8px 5px 8px 5px;
+    white-space:nowrap;
+
+}
+
+
+
+.tableresult td {
+    /*
+         border-collapse: collapse;
+         border-left: 1px solid #C1DAD7;
+         */
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    background: #fff;
+    padding: 5px 5px 4px 10px;
+
+}
+
+.tableresult tr.even td {
+    background-color:#dbeaff;
+}
+
+.tableresult tr.highlight td {
+    background-color:#f6ff90;
+}
+
+.tableresult tr td.foundtopup {
+    color: #F00;
+}
+
+
+.tableresult td.nodatafound{
+    color: #F00;
+    text-align: center;
+    padding: 10px;
+
+}
+
+
+.tableresult td.alt {
+    background: #0;
+    color: #B4AA9D;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+<div class="outer">
+
+    <div id="content">
+      <form>
+      <fieldset class="messageinfo">
+    แจ้งผล Reject Dataset (Reject Report)
+        </fieldset>
+    <br/>
+    <table width="100%" class="tableresult" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <th scope="col" width="40%">รายการ</th>
+        <th scope="col" width="60%">รายละเอียด</th>
+      </tr>
+     
+      <tr>
+        <td align="left">Dataset Name :</td>
+        <td> #datasetName</td>
+      </tr>
+      <tr>
+        <td align="left">Dataset Date :</td>
+        <td>#datasetDate</td>
+      </tr>
+      <tr>
+        <td align="left">Reject Date : </td>
+        <td>#rejectDate</td>
+      </tr>
+      <tr>
+        <td align="left">Reject By : </td>
+        <td>#rejectBy</td>
+      </tr>
+      <tr>
+        <td align="left">Reject Reason : </td>
+        <td> #rejectReason</td>
+      </tr>
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

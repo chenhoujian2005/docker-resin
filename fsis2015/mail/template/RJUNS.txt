@@ -1,0 +1,8 @@
+แจ้งผล Reject  (Reject Unstructured)<br/>
+<br/>
+Sfi             : #sfiName<br/>
+Data Name    : #datasetName<br/>
+Data Date       : #dataDate<br/>
+Reject Date     : #rejectDate<br/>
+Reject By       : #rejectBy<br/>
+Reject Reason   : #rejectReason<br/>

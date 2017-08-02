@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class name="RiskQuestion" table="risk_question">
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="id"
+                >
+            <generator class="identity"/>
+        </id>
+        <many-to-one
+                name="sfi"
+                column="SFI_ID"
+                class="Sfi"
+                not-null="false"
+                >
+        </many-to-one>
+       
+        <property name="createDate" type="timestamp">
+            <column name="CREATE_DATE" length="23"/>
+        </property>
+        <property name="createBy" type="string">
+            <column name="CREATE_BY" length="64"/>
+        </property>
+        <property name="updateDate" type="timestamp">
+            <column name="UPDATE_DATE" length="23"/>
+        </property>
+        <property name="updateBy" type="string">
+            <column name="UPDATE_BY" length="64"/>
+        </property>
+        <property name="resultheader" type="string">
+            <column name="RESULTHEADER" length="64"/>
+        </property>
+        <property name="resultchoice" type="integer">
+            <column name="RESULTCHOICE" length="10"/>
+        </property>
+        <property name="resultcomment" type="string">
+            <column name="RESULTCOMMENT" length="256"/>
+        </property>
+        <property name="choice1hearder" type="string">
+            <column name="CHOICE1HEARDER" length="64"/>
+        </property>
+        <property name="choice11" type="integer">
+            <column name="CHOICE1_1" length="10"/>
+        </property>
+        <property name="choice12" type="integer">
+            <column name="CHOICE1_2" length="10"/>
+        </property>
+        <property name="choice13" type="integer">
+            <column name="CHOICE1_3" length="10"/>
+        </property>
+        <property name="comment1" type="string">
+            <column name="COMMENT1" length="256"/>
+        </property>
+        <property name="choice2hearder" type="string">
+            <column name="CHOICE2HEARDER" length="64"/>
+        </property>
+        <property name="choice21" type="integer">
+            <column name="CHOICE2_1" length="10"/>
+        </property>
+        <property name="choice22" type="integer">
+            <column name="CHOICE2_2" length="10"/>
+        </property>
+        <property name="choice23" type="integer">
+            <column name="CHOICE2_3" length="10"/>
+        </property>
+        <property name="comment2" type="string">
+            <column name="COMMENT2" length="256"/>
+        </property>
+        <property name="choice3hearder" type="string">
+            <column name="CHOICE3HEARDER" length="64"/>
+        </property>
+        <property name="choice31" type="integer">
+            <column name="CHOICE3_1" length="10"/>
+        </property>
+        <property name="choice32" type="integer">
+            <column name="CHOICE3_2" length="10"/>
+        </property>
+        <property name="choice33" type="integer">
+            <column name="CHOICE3_3" length="10"/>
+        </property>
+        <property name="comment3" type="string">
+            <column name="COMMENT3" length="256"/>
+        </property>
+        <property name="choice4hearder" type="string">
+            <column name="CHOICE4HEARDER" length="64"/>
+        </property>
+        <property name="choice41" type="integer">
+            <column name="CHOICE4_1" length="10"/>
+        </property>
+        <property name="choice42" type="integer">
+            <column name="CHOICE4_2" length="10"/>
+        </property>
+        <property name="choice43" type="integer">
+            <column name="CHOICE4_3" length="10"/>
+        </property>
+        <property name="comment4" type="string">
+            <column name="COMMENT4" length="256"/>
+        </property>
+        <property name="choice5hearder" type="string">
+            <column name="CHOICE5HEARDER" length="64"/>
+        </property>
+        <property name="choice51" type="integer">
+            <column name="CHOICE5_1" length="10"/>
+        </property>
+        <property name="choice52" type="integer">
+            <column name="CHOICE5_2" length="10"/>
+        </property>
+        <property name="choice53" type="integer">
+            <column name="CHOICE5_3" length="10"/>
+        </property>
+        <property name="comment5" type="string">
+            <column name="COMMENT5" length="256"/>
+        </property>
+    </class>
+</hibernate-mapping>

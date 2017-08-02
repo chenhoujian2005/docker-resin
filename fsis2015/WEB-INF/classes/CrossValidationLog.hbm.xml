@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="CrossValidationLog"
+		table="cross_validation_log"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="script"
+			column="script"
+			type="string"
+			not-null="false"
+		/>
+		<property
+			name="createDate"
+			column="create_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="createBy"
+			column="create_by"
+			type="string"
+			not-null="false"
+			length="16"
+		/>
+		<property
+			name="updateDate"
+			column="update_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="updateBy"
+			column="update_by"
+			type="string"
+			not-null="false"
+			length="16"
+		/>
+		<many-to-one
+			name="dsVersion"
+			column="ds_version_id"
+			class="DsVersion"
+			not-null="false"
+		>
+		</many-to-one>
+        <many-to-one
+			name="dsTitle"
+			column="ds_title_id"
+			class="DsTitle"
+			not-null="false"
+		>
+		</many-to-one>
+          <many-to-one
+			name="activityLog"
+			column="activity_log_id"
+			class="ActivityLog"
+			not-null="false"
+		>
+		</many-to-one>
+        <many-to-one
+			name="crossValidation"
+			column="cross_validation_id"
+			class="CrossValidation"
+			not-null="false"
+		>
+		</many-to-one>
+
+	</class>	
+</hibernate-mapping>

@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="ExportLog"
+		table="export_log"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="dsDate"
+			column="ds_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="exportDate"
+			column="export_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="startTime"
+			column="start_time"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="endTime"
+			column="end_time"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="fileName"
+			column="file_name"
+			type="string"
+			not-null="false"
+			length="64"
+		/>
+		<property
+			name="fileSize"
+			column="file_size"
+			type="integer"
+			not-null="false"
+			length="10"
+		/>
+		<property
+			name="returnReferenceNo"
+			column="return_reference_no"
+			type="string"
+			not-null="false"
+			length="32"
+		/>
+		<property
+			name="sendingStatus"
+			column="sending_status"
+			type="string"
+			not-null="false"
+			length="8"
+		/>
+		<property
+			name="sendingRemark"
+			column="sending_remark"
+			type="string"
+			not-null="false"
+			length="256"
+		/>
+		<property
+			name="sendTo"
+			column="send_to"
+			type="string"
+			not-null="false"
+			length="4"
+		/>
+        <property
+            name="resendRequestFlag"
+            column="resend_request_flag"
+            type="boolean"
+            not-null="false"
+            length="1"
+            />
+        <property
+                name="fileUploadId"
+                column="file_upload_id"
+                type="integer"
+                not-null="false"
+                />
+
+
+        <many-to-one
+			name="sfi"
+			column="sfi_id"
+			class="Sfi"
+			not-null="false"
+		>
+		</many-to-one>
+        <many-to-one
+			name="dsTitle"
+			column="ds_title_id"
+			class="DsTitle"
+			not-null="false"
+		    >
+		</many-to-one>
+        <many-to-one
+                name="dsversion"
+                column="ds_version_id"
+                class="DsVersion"
+                not-null="false"
+                >
+		</many-to-one>
+
+</class>	
+</hibernate-mapping>

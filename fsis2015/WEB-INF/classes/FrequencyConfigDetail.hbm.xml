@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="FrequencyConfigDetail"
+		table="frequency_config_detail"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+		<property
+			name="datasetDate"
+			column="dataset_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+			name="dueDate"
+			column="due_date"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+
+		<property
+			name="alertBefore"
+			column="alert_before"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="alertAfter"
+			column="alert_after"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+		<property
+			name="alertSuperVisor"
+			column="alert_super_visor"
+			type="timestamp"
+			not-null="false"
+			length="23"
+		/>
+        <property
+                name="pkbDueDate"
+                column="pkb_due_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="pcxDueDate"
+                column="pcx_due_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="pcsDueDate"
+                column="pcs_due_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+		<many-to-one
+			name="frequencyConfig"
+			column="frequency_config_id"
+			class="FrequencyConfig"
+			not-null="false"
+		>
+		</many-to-one>
+
+
+	</class>	
+</hibernate-mapping>

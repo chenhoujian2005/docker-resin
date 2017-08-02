@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="SubSystems"
+            table="SubSystems"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="SubSystemId"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="subSystemName"
+                column="SubSystemName"
+                type="string"
+                not-null="false"
+
+                />
+
+        <many-to-one
+                name="system"
+                column="SystemId"
+                class="Systems"
+                not-null="false"
+                >
+        </many-to-one>
+
+    </class>
+
+</hibernate-mapping>

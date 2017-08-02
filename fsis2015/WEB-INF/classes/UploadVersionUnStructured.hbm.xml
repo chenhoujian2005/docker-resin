@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="UploadVersionUnStructured"
+            table="upload_version_unstructured"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="id"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="fileName"
+                column="file_name"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="version"
+                column="version"
+                type="big_decimal"
+                not-null="false"
+                length="10"
+                />
+        <!-- please tell Joe Hudson that the type 'xml' could not be resolved.. defaulting to java.lang.String -->
+
+        <property
+                name="createDate"
+                column="create_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="createBy"
+                column="create_by"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="updateDate"
+                column="update_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="updateBy"
+                column="update_by"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+
+        <property
+                name="status"
+                column="status"
+                type="string"
+                not-null="false"
+                length="2"
+                />
+        <property
+                name="sendDate"
+                column="send_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="description"
+                column="description"
+                type="string"
+                not-null="false"
+                length="200"
+                />
+        <property
+                name="contentUnstructured"
+                column="content_unstructured"
+                type="java.sql.Blob"
+                not-null="false"
+                lazy="true"
+                />
+        <property
+                name="enable"
+                column="enable"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <many-to-one
+                name="fileUploadUnStructured"
+                column="file_upload_unstructured_id"
+                class="FileUploadUnStructured"
+                not-null="false"
+                >
+        </many-to-one>
+
+
+    </class>
+</hibernate-mapping>

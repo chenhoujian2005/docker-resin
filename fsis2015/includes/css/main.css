@@ -1,0 +1,35 @@
+html, body {
+    font-size: 11px;
+    font-family: "Ms Sans Serif";
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    border: none;
+}
+
+table {
+    margin: 0px;
+    padding: 0px;
+}
+
+#menuTree {
+    height: 100%;
+}
+
+.wrapper {
+    background-color: brown;
+    height: 100% !important;
+    width: 100%;
+}
+iframe{
+     height:100%;
+     z-index:9999;
+}
+.content{
+   background-color:darkgreen;
+   width:100%;
+   height:auto;
+   border:1px;
+}

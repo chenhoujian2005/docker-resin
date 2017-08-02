@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="ViewClassificationItem"
+            table="view_classification_item"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="id"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="code"
+                column="code"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="name"
+                column="name"
+                type="string"
+                not-null="false"
+                length="2048"
+                />
+        <property
+                name="description"
+                column="description"
+                type="string"
+                not-null="false"
+                />
+        <property
+                name="level"
+                column="level"
+                type="int"
+                not-null="false"
+                />
+        <property
+                name="parentCode"
+                column="parent_code"
+                type="string"
+                not-null="false"
+                length="2048"
+                />
+
+        <property
+                name="orderNo"
+                column="order_no"
+                type="int"
+                not-null="false"
+                />
+        <property
+                name="multiple"
+                column="multiple"
+                type="int"
+                not-null="false"
+                />
+        <property
+                name="groupId"
+                column="group_id"
+                type="int"
+                not-null="false"
+                />
+        <property
+                name="groupName"
+                column="group_name"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="versionId"
+                column="version_id"
+                type="int"
+                not-null="false"
+                />
+        <property
+                name="version"
+                column="version"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="classificationId"
+                column="classification_id"
+                type="int"
+                not-null="false"
+                />
+
+
+    </class>
+</hibernate-mapping>

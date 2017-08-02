@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="FrequencyConfig"
+            table="frequency_config"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="id"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="frequency"
+                column="frequency"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="dueday"
+                column="dueday"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="alertBefore"
+                column="alert_before"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="alertAfter"
+                column="alert_after"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="alertAfterReject"
+                column="alert_after_reject"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="pkbDueday"
+                column="pkb_dueday"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="pcxDueday"
+                column="pcx_dueday"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+        <property
+                name="pcsDueday"
+                column="pcs_dueday"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+
+        <property
+                name="dsVersionId"
+                column="ds_version_id"
+                type="integer"
+                not-null="false"
+                length="10"
+                />
+
+        <many-to-one
+                name="frequencyConfigMain"
+                column="frequency_config_main_id"
+                class="FrequencyConfigMain"
+                not-null="false"
+                >
+        </many-to-one>
+
+        <many-to-one
+                name="dsTitle"
+                column="ds_title_id"
+                class="DsTitle"
+                not-null="false"
+                >
+        </many-to-one>
+
+
+        <set name="frequencyConfigDetails" inverse="true" cascade="delete">
+            <key column="frequency_config_id"/>
+            <one-to-many class="FrequencyConfigDetail"/>
+        </set>
+
+
+    </class>
+</hibernate-mapping>

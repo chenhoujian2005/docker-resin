@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+	<class
+		name="CrossResultMaster"
+		table="cross_result_master"
+	>
+		<meta attribute="sync-DAO">false</meta>
+		<id
+			name="id"
+			type="integer"
+			column="id"
+		>
+			<generator class="identity"/>
+		</id>
+
+        <property
+                name="datasetDate"
+                column="dataset_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="uploaded"
+                column="uploaded"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="sendingWaive"
+                column="sending_waive"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="notUse"
+                column="not_use"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="noTransaction"
+                column="no_transaction"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="notMatchPeriod"
+                column="not_match_period"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="latestProcessDate"
+                column="latest_process_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+
+        <many-to-one
+                name="sfi"
+                column="sfi_id"
+                class="Sfi"
+                not-null="false"
+                >
+        </many-to-one>
+        <many-to-one
+                name="dsVersion"
+                column="ds_version_id"
+                class="DsVersion"
+                not-null="false"
+                >
+        </many-to-one>
+          <set name="crossResultSlaves" inverse="true" cascade="delete">
+			<key column="cross_result_master_id"/>
+			<one-to-many class="CrossResultSlave"/>
+		</set>
+	</class>
+</hibernate-mapping>

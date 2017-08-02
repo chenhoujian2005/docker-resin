@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="UnstructureTitle"
+            table="unstructured_title"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="id"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="name"
+                column="name"
+                type="string"
+                not-null="false"
+                length="256"
+                />
+        <property
+                name="createDate"
+                column="create_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="createBy"
+                column="create_by"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="updateDate"
+                column="update_date"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="updateBy"
+                column="update_by"
+                type="string"
+                not-null="false"
+                length="64"
+                />
+        <property
+                name="enable"
+                column="enable"
+                type="boolean"
+                not-null="false"
+                length="1"
+                />
+        <property
+                name="datasetDateOfUns"
+                column="dataset_date_of_uns"
+                type="string"
+                not-null="false"
+                length="512"
+                />
+        <property
+                name="unstructureVersionId"
+                column="unstructured_version_id"
+                type="integer"
+                not-null="true"
+                />
+        <property
+                name="unstructuredId"
+                column="unstructured_id"
+                type="integer"
+                not-null="true"
+                />
+        <property
+                name="refId"
+                column="ref_id"
+                type="integer"
+                not-null="false"
+                />
+
+        <!--<many-to-one-->
+                <!--name="ref"-->
+                <!--column="ref_id"-->
+                <!--class="UnstructureTitle"-->
+                <!--not-null="false"-->
+                <!-->-->
+        <!--</many-to-one>-->
+
+        <!--<set name="unstructureTitles" inverse="true">-->
+            <!--<key column="id"/>-->
+            <!--<one-to-many class="UnstructureTitle"/>-->
+        <!--</set>-->
+
+        <set name="unstructureTitles" inverse="true">
+            <key column="unstructured_id"/>
+            <one-to-many class="UnstructureTitle"/>
+        </set>
+
+
+
+    </class>
+</hibernate-mapping>

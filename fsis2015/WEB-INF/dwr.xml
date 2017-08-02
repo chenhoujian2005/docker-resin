@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+
+<dwr>
+    <allow>
+        <!--<create creator="new" javascript="UnstructuredFileSubTitle">-->
+            <!--<param name="class" value="th.go.mof.fpo.category.UnstructuredFileSubTitle"/>-->
+        <!--</create>-->
+        <!--<create creator="new" javascript="StructuredFileSubTitle">-->
+            <!--<param name="class" value="th.go.mof.fpo.category.StructuredFileSubTitle"/>-->
+        <!--</create>-->
+        <create creator="new" javascript="AjaxManager">
+            <param name="class" value="th.go.mof.fpo.manager.AjaxManager" />
+        </create>
+        
+        <convert converter="bean" match="org.directwebremoting.webwork.ActionDefinition"/>
+        <convert converter="bean" match="org.directwebremoting.webwork.AjaxResult"/>
+        <convert converter="bean" match="com.opensymphony.xwork.ActionSupport"/>
+
+        <convert converter="bean" match="th.go.mof.fpo.PairValue"/>
+        <convert converter="bean" match="th.go.mof.fpo.model.*"/>
+
+    </allow>
+
+    <signatures>
+        <![CDATA[
+        import java.util.Map;
+        import com.opensymphony.webwork.validators.DWRValidator;
+        import org.directwebremoting.webwork.ActionDefinition;
+        import org.directwebremoting.webwork.DWRAction;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+        import javax.servlet.ServletContext;
+
+        DWRValidator.doPost(String, String, Map<String, String>);
+        DWRAction.execute(ActionDefinition, Map<String, String>, HttpServletRequest, HttpServletResponse, ServletContext);
+        ]]>
+    </signatures>
+</dwr>

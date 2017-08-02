@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--Qoixk5C13s09uqL66sHpx/2KgLVAMEnj-->
+        <!-- local connection properties -->
+        <property name="hibernate.connection.url">
+            <!-- ######## [ Server Database @ FPO ] ######## -->
+            <!--jdbc:jtds:sqlserver://10.252.7.115/FSIS_forfpotest;bufferMaxMemory=65536-->
+            <!--jdbc:jtds:sqlserver://10.252.7.115/fsis_production;bufferMaxMemory=65536-->
+            <!-- ######## [ My Local ######## -->
+            <!--jdbc:jtds:sqlserver://127.0.0.1:1433/FSIS_forfpotest;bufferMaxMemory=65536 -->
+            <!-- ######## [Servier @ VSM ######## -->
+            <!--jdbc:jtds:sqlserver://10.80.1.148:1433/fsis_production;instance=FPO;bufferMaxMemory=65536-->
+            <!--######## FPO ON SITE DEV############-->
+            <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_fpo_old;bufferMaxMemory=65536-->
+            <!--########## PRODUCTION ############-->
+            jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_production;bufferMaxMemory=65536
+            <!--######## FPO ############-->
+            <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_fpo;bufferMaxMemory=65536-->
+            <!--######## SFI ############-->
+            <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_sfitest;bufferMaxMemory=65536-->
+
+
+            <!--jdbc:jtds:sqlserver://10.80.1.148:1433/fsis_production;bufferMaxMemory=65536-->
+            <!--jdbc:jtds:sqlserver://10.80.1.112:1433/fsis_production;bufferMaxMemory=65536-->
+            <!--jdbc:jtds:sqlserver://127.0.0.1:1433/fsis_production;bufferMaxMemory=65536 -->
+        </property>
+        <property name="hibernate.connection.driver_class">
+            net.sourceforge.jtds.jdbc.Driver
+        </property>
+        <!-- 10.252.7.113   -->
+        <!--<property name="hibernate.connection.username">sa</property>-->
+        <!--<property name="hibernate.connection.password">sa123</property>-->
+        <!-- OFfice -->
+        <!--<property name="hibernate.connection.username">sa</property>-->
+        <!--<property name="hibernate.connection.password">passw0rd</property>-->
+        <!--FPO ON SITE 10.252.7.113-->
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.connection.password">sa123</property>
+        <!-- 10.252.7.115 -->
+        <!--<property name="hibernate.connection.username">sa</property>-->
+        <!--<property name="hibernate.connection.password">P@ssw0rd</property>-->
+
+        <property name="c3p0.acquire_increment">1</property>
+        <property name="c3p0.idle_test_period">100</property>
+        <!-- seconds -->
+        <property name="c3p0.max_size">100</property>
+        <property name="c3p0.max_statements">0</property>
+        <property name="c3p0.min_size">10</property>
+        <property name="c3p0.timeout">100</property>
+        <!-- seconds -->
+        <!-- DEPRECATED very expensive property name="c3p0.validate>-->
+
+        <!--open this tag when use encryp -->
+        <!--<property name="connection.provider_class">
+	      org.jasypt.hibernate.connectionprovider.EncryptedPasswordC3P0ConnectionProvider
+	    </property>-->
+        <!--<property name="connection.encryptor_registered_name">
+            stringEncryptor
+          </property>-->
+
+        <property name="cache.provider_class">
+            org.hibernate.cache.OSCacheProvider
+        </property>
+        <property name="dialect">
+            org.hibernate.dialect.SQLServerDialect
+        </property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.transaction.factory_class">
+            org.hibernate.transaction.JDBCTransactionFactory
+        </property>
+        <!-- session properties -->
+        <property name="hibernate.current_session_context_class">
+            org.hibernate.context.ThreadLocalSessionContext
+        </property>
+        <!--<property name="current_session_context_class">thread</property>-->
+
+        <!-- Mapping  -->
+        <mapping resource="ActivityLog.hbm.xml"/>
+        <mapping resource="Configuration.hbm.xml"/>
+        <mapping resource="DsTitle.hbm.xml"/>
+        <mapping resource="DsVersion.hbm.xml"/>
+        <mapping resource="DsVersionLog.hbm.xml"/>
+        <mapping resource="FileUpload.hbm.xml"/>
+        <mapping resource="HelpDoc.hbm.xml"/>
+        <mapping resource="News.hbm.xml"/>
+        <mapping resource="ReportType.hbm.xml"/>
+        <mapping resource="ReportTypeLog.hbm.xml"/>
+        <mapping resource="SendingWaive.hbm.xml"/>
+        <mapping resource="SendingWaiveLog.hbm.xml"/>
+        <mapping resource="SendLog.hbm.xml"/>
+        <mapping resource="Sfi.hbm.xml"/>
+        <mapping resource="UploadVersion.hbm.xml"/>
+        <mapping resource="UserAuthentication.hbm.xml"/>
+        <mapping resource="Government.hbm.xml"/>
+        <mapping resource="IsicBot.hbm.xml"/>
+        <mapping resource="SfiBranch.hbm.xml"/>
+        <mapping resource="Classification.hbm.xml"/>
+        <mapping resource="ClassificationItem.hbm.xml"/>
+        <mapping resource="ClassificationVersion.hbm.xml"/>
+        <mapping resource="CrossValidation.hbm.xml"/>
+        <mapping resource="CrossValidationLog.hbm.xml"/>
+        <mapping resource="DocumentStatusLog.hbm.xml"/>
+        <mapping resource="ValidationRule.hbm.xml"/>
+        <mapping resource="ValidationRuleLog.hbm.xml"/>
+        <mapping resource="DefinedData.hbm.xml"/>
+        <mapping resource="DefinedDataDetail.hbm.xml"/>
+        <mapping resource="DefinedDataLog.hbm.xml"/>
+        <mapping resource="DefinedDataDetailLog.hbm.xml"/>
+        <mapping resource="ExportLog.hbm.xml"/>
+        <mapping resource="FileUploadTransferLog.hbm.xml"/>
+        <mapping resource="FrequencyConfig.hbm.xml"/>
+        <mapping resource="FrequencyConfigDetail.hbm.xml"/>
+        <mapping resource="FrequencyConfigMain.hbm.xml"/>
+        <mapping resource="FrequencyConfigLog.hbm.xml"/>
+        <mapping resource="FrequencyConfigDetailLog.hbm.xml"/>
+        <mapping resource="FrequencyConfigMainLog.hbm.xml"/>
+        <mapping resource="OfficialHoliday.hbm.xml"/>
+        <mapping resource="KpiDefinedData.hbm.xml"/>
+        <mapping resource="KpiDefinedDataDetail.hbm.xml"/>
+        <mapping resource="NoTransaction.hbm.xml"/>
+        <mapping resource="NoTransactionLog.hbm.xml"/>
+        <mapping resource="PassFirst.hbm.xml"/>
+        <mapping resource="CrossResultMaster.hbm.xml"/>
+        <mapping resource="CrossResultSlave.hbm.xml"/>
+        <mapping resource="Area.hbm.xml"/>
+        <mapping resource="Province.hbm.xml"/>
+        <mapping resource="ReportTitle.hbm.xml"/>
+        <mapping resource="ReportUpload.hbm.xml"/>
+        <mapping resource="PersonalConsumption.hbm.xml"/>
+        <mapping resource="ClassificationGroup.hbm.xml"/>
+        <mapping resource="RiskQuestion.hbm.xml"/>
+        <mapping resource="IsicVersion.hbm.xml"/>
+        <mapping resource="ViewIsicBot.hbm.xml"/>
+        <mapping resource="ViewClassificationItem.hbm.xml"/>
+        <mapping resource="FrequencyUnstructureMain.hbm.xml"/>
+        <mapping resource="FrequencyUnstructureMainLog.hbm.xml"/>
+        <mapping resource="FrequencyUnstructure.hbm.xml"/>
+        <mapping resource="FrequencyUnstructureLog.hbm.xml"/>
+        <mapping resource="FrequencyUnstructureDetail.hbm.xml"/>
+        <mapping resource="FrequencyUnstructureDetailLog.hbm.xml"/>
+        <mapping resource="Frequency.hbm.xml"/>
+        <mapping resource="SendingWaiveUnstructure.hbm.xml"/>
+        <mapping resource="SendingWaiveUnstructureLog.hbm.xml"/>
+        <mapping resource="UnstructureVersion.hbm.xml"/>
+        <mapping resource="UnstructureTitle.hbm.xml"/>
+        <mapping resource="IssueLog.hbm.xml"/>
+        <mapping resource="IssuePriority.hbm.xml"/>
+        <mapping resource="IssueStatus.hbm.xml"/>
+        <mapping resource="System.hbm.xml"/>
+        <mapping resource="SubSystem.hbm.xml"/>
+        <mapping resource="Upload_bi.hbm.xml"/>
+        <mapping resource="FileUploadUnStructured.hbm.xml"/>
+        <mapping resource="UploadVersionUnStructured.hbm.xml"/>
+        <mapping resource="QuestionAnswerGroup.hbm.xml"/>
+        <mapping resource="QuestionAnswer.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

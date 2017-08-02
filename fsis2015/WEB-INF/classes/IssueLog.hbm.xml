@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="IssueLog"
+            table="IssueLog"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="IssueLogId"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="issueDate"
+                column="IssueDate"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+
+        <property
+                name="issueDescription"
+                column="IssueDescription"
+                type="string"
+                not-null="false"
+                />
+        <property
+                name="issueFile"
+                column="IssueFile"
+                type="java.sql.Blob"
+                not-null="false"
+                />
+        <property
+                name="issueFileName"
+                column="IssueFileName"
+                type="string"
+                length="1024"
+
+                />
+        <property
+                name="solutions"
+                column="Solutions"
+                type="string"
+                not-null="false"
+
+                />
+        <property
+                name="solutionFile"
+                column="SolutionFile"
+                type="java.sql.Blob"
+                not-null="false"
+                />
+        <property
+                name="solutionFileName"
+                column="SolutionFileName"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="troubleshooter"
+                column="Editor"
+                type="string"
+                not-null="false"
+                length="1024"
+                />
+        <property
+                name="mailTo"
+                column="MailTo"
+                type="string"
+                not-null="false"
+
+                />
+        <property
+                name="createBy"
+                column="CreateBy"
+                type="string"
+                />
+        <property
+                name="createDatetime"
+                column="CreateDatetime"
+                type="timestamp"
+                not-null="false"
+                length="23"
+                />
+        <property
+                name="lastUpdateBy"
+                column="LastUpdateBy"
+                type="string"
+                not-null="false"
+
+                />
+        <property
+                name="lastUpdateDatetime"
+                column="LastUpdateDatetime"
+                type="timestamp"
+                length="23"
+                />
+        <many-to-one
+                name="systems"
+                column="SystemId"
+                class="Systems"
+                not-null="false"
+                >
+        </many-to-one>
+        <many-to-one
+                name="subSystems"
+                column="SubSystemId"
+                class="SubSystems"
+                not-null="false"
+                >
+        </many-to-one>
+        <many-to-one
+                name="issuePriority"
+                column="IssuePriorityId"
+                class="IssuePriority"
+                not-null="false"
+                >
+        </many-to-one>
+        <many-to-one
+                name="issueStatus"
+                column="IssueStatusId"
+                class="IssueStatus"
+                not-null="false"
+                >
+        </many-to-one>
+
+
+    </class>
+
+</hibernate-mapping>

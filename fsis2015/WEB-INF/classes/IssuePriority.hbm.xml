@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="th.go.mof.fpo.model">
+    <class
+            name="IssuePriority"
+            table="IssuePriority"
+            >
+        <meta attribute="sync-DAO">false</meta>
+        <id
+                name="id"
+                type="integer"
+                column="IssuePriorityId"
+                >
+            <generator class="identity"/>
+        </id>
+
+        <property
+                name="issuePriorityName"
+                column="IssuePriorityName"
+                type="string"
+                not-null="false"
+                length="128"
+                />
+        <set name="issueLog" inverse="true">
+            <key column="IssuePriorityId"/>
+            <one-to-many class="IssuePriority"/>
+        </set>
+
+
+    </class>
+
+</hibernate-mapping>
