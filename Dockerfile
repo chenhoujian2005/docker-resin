@@ -7,7 +7,7 @@ RUN (wget http://www.caucho.com/download/resin-3.1.9.tar.gz; tar -xzvf resin-3.1
 
 RUN (cd resin-3.1.9; ./configure; make; make install)
 
-COPY fsis2015 /resin-3.1.9/webapps/
+COPY fsis2015 /resin-3.1.9/webapps/fsis2015/
 
 EXPOSE 8080
 
