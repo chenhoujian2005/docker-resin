@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>Simple jsp page</title>
+    <script type="text/javascript" src="../includes/js/jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="../includes/css/style.css">
 <script type='text/javascript' src='../dwr/engine.js'></script>
 <script type='text/javascript' src='../dwr/util.js'></script>
@@ -16,16 +17,19 @@
         AjaxManager.findDsTitleById(id, function(data) {
             prepareOption(zone, data, keyName, keyValue, clearZones);
         });
+        smeHideDiv(id);
     }
     function findSubtitle(id, zone, keyName, keyValue, clearZones) {
         AjaxManager.findDsTitleByIdAndOrg(id, null, function(data) {
             prepareOption(zone, data, keyName, keyValue, clearZones);
         });
+        smeHideDiv(id);
     }
     function findVersion(id, zone, keyName, keyValue) {
         AjaxManager.findDsVersionById(id, function(data) {
             prepareOptionOne(zone, data, keyName, keyValue);
         });
+        smeHideDiv(id);
     }
 
     function prepareOptionOne(zone, data, keyName, keyValue) {
@@ -58,9 +62,10 @@
             thisForm.submit();  
         } 
     }
+    var jq = jQuery.noConflict();
 </script>
 </head>
-<body>
+<body onload="jq('.smegroup').hide();">
 <s:form id="form_submit_structured" action="submit_structured" enctype="multipart/form-data">
     <%--<s:hidden name="type" id="type"/>--%>
     <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
@@ -176,6 +181,32 @@
                                                     <input type="file" name="upload" size="60" value="" id="upload"/>
                                                 </td>
                                             </tr>
+
+                                                <tr class="bgGreen2 smegroup">
+                                                    <td class="label">File name :</td>
+                                                    <td>
+                                                        <input type="file" name="upload1" size="60" value="" id="upload1"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bgGreen1 smegroup">
+                                                    <td class="label">File name :</td>
+                                                    <td>
+                                                        <input type="file" name="upload2" size="60" value="" id="upload2"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bgGreen2 smegroup">
+                                                    <td class="label">File name :</td>
+                                                    <td>
+                                                        <input type="file" name="upload3" size="60" value="" id="upload3"/>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bgGreen1 smegroup">
+                                                    <td class="label">File name :</td>
+                                                    <td>
+                                                        <input type="file" name="upload4" size="60" value="" id="upload4"/>
+                                                    </td>
+                                                </tr>
+
                                         </table>
                                         <table width="100%">
                                             <tr>
@@ -235,6 +266,14 @@
             }
         }
         return true;
+    }
+    function smeHideDiv(target){
+        //alert(target);
+        if (target == 621 || target == 640) {
+            jq('.smegroup').show();
+        } else {
+            jq('.smegroup').hide();
+        }
     }
 </script>
 

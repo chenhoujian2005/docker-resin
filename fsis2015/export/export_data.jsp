@@ -40,7 +40,7 @@
                                     <%--content here--%>
                                 <table width="100%">
                                     <tr>
-                                        <td><b>Export Data</b></td>
+                                        <td><b>Export Data Structured</b></td>
                                     </tr>
                                 </table>
                                 <table width="100%" class="displayTable">
@@ -64,6 +64,12 @@
                                         </td>
                                     </tr>
                                     <tr class="bgGreen2">
+                                        <td class="label">Reference No :</td>
+                                        <td colspan="3">
+                                            <s:textfield name="refNo" id="refNo" size="20"/><br>
+                                        </td>
+                                    </tr>
+                                    <tr class="bgGreen1">
                                         <td class="label" align="right" width="20%">Dataset Date From :</td>
                                         <td width="28%">
                                             <s:textfield name="dateFrom" id="dateFrom" readonly="true" size="8"/>
@@ -81,13 +87,13 @@
                                                  align="absmiddle">
                                         </td>
                                     </tr>
-                                    <tr class="bgGreen1">
+                                    <tr class="bgGreen2">
                                         <td class="label">Send To :</td>
                                         <td colspan="3">
                                             <s:radio list="#{'':'All','BOT':'BOT','SEPO':'SEPO'}" name="sendTo"/>
                                         </td>
                                     </tr>
-                                    <tr class="bgGreen2">
+                                    <tr class="bgGreen1">
                                         <td class="label">Sending Time Start :</td>
                                         <td>
                                             <s:textfield name="dateStartTime" id="dateStartTime" size="8" readonly="true"/>
@@ -109,7 +115,7 @@
                                             <s:select list="minuteList" name="sendingMinTo"/> (Hour:Min)
                                         </td>
                                     </tr>
-                                    <tr class="bgGreen1">
+                                    <tr class="bgGreen2">
                                         <td class="label">Export Date From :</td>
                                         <td>
                                             <s:textfield name="dateExport" id="dateExport" readonly="true" size="8"/>
@@ -131,9 +137,9 @@
                                             <s:select list="minuteList" name="exportMinTo"/> (Hour:Min)
                                         </td>
                                     </tr>
-                                    <tr class="bgGreen2">
+                                    <tr class="bgGreen1">
                                         <td class="label">Sending Status :</td>
-                                        <td colspan="3"><s:radio list="#{'':'All','Send Success.':'Success','Send Fail.':'Fail'}" name="sendStatus"/></td>
+                                        <td colspan="3"><s:radio list="#{'':'All','Send Success.':'Success','Fail':'Fail'}" name="sendStatus"/></td>
                                     </tr>
 
                                         <%--<tr class="bgGreen1">--%>
@@ -203,6 +209,7 @@
     function resetForm() {
 
         thisForm.organization.value = '';
+        thisForm.refNo.value = '';
         thisForm.dataset.value = '';
         thisForm.dateFrom.value = '';
         thisForm.dateTo.value = '';

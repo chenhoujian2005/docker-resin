@@ -70,7 +70,7 @@
                                                             <font color="red">Failed Key Basic Validation</font>
                                                         </c:when>
                                                         <c:when test="${sessionScope.uploadStatus eq 'TO_ADJ'}">
-                                                            <font color="red">Please go to Submit Adjusted Page (This dataset has passed complex validation)</font>
+                                                            <font color="red">Please go to Submit Adjusted Page (This dataset has passed complex validation or This dataset has report approved)</font>
                                                         </c:when>
                                                         <c:when test="${sessionScope.uploadStatus eq 'TO_NOR'}">
                                                             <font color="red">Please go to Submit Structured Page (This dataset are not pass complex validation)</font>

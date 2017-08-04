@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DS_SMD name="SME Data" schemaVersion="SFI 3.0" type="No Fixed CL with sub-repeating" xmlns:x0="http://www.w3.org/2001/XMLSchema">
+    <CommonHeader>
+	    <OrganizationId>093</OrganizationId>
+            <DataSetDate>2017-04-30</DataSetDate>
+    </CommonHeader>
+    <DS_SMD_Header />
+    <DS_SMD_Content> 
+    
+
+	  <ContentRecordGroup>
+            <PrimaryInvolvedPartyId>2</PrimaryInvolvedPartyId>
+			<PrimaryUniqueIdType>324002</PrimaryUniqueIdType>
+			<ArrangementContractDate>2017-01-01</ArrangementContractDate>
+			<FiArrangementNumber><![CDATA[1]]></FiArrangementNumber>
+			<ArrangementBusinessType>7777777</ArrangementBusinessType>
+
+																				<ArrangementGroupInfo>
+										<ArrangementGroupDetails>
+					<ArrangementType>018013</ArrangementType>
+					<ContractAmount>1</ContractAmount>
+					<OutstandingAmount>1</OutstandingAmount>
+				    <ArrangementMaturityDate></ArrangementMaturityDate>
+					<AssetClassificationType>020005</AssetClassificationType>
+					</ArrangementGroupDetails>
+																			</ArrangementGroupInfo>
+								
+																					<CollateralGroupInfo>
+										<CollateralGroupDetails>
+						<CollateralType>286004</CollateralType>
+						<CollateralValueAmount>1</CollateralValueAmount>
+					</CollateralGroupDetails>
+																			</CollateralGroupInfo>
+									
+																						<RelatedIpGroupInfo/>
+			
+        </ContentRecordGroup> 
+
+	    </DS_SMD_Content>
+</DS_SMD>

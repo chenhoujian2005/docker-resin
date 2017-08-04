@@ -13,13 +13,14 @@
             <!-- ######## [ My Local ######## -->
             <!--jdbc:jtds:sqlserver://127.0.0.1:1433/FSIS_forfpotest;bufferMaxMemory=65536 -->
             <!-- ######## [Servier @ VSM ######## -->
-            <!--jdbc:jtds:sqlserver://10.80.1.148:1433/fsis_production;instance=FPO;bufferMaxMemory=65536-->
+            <!--jdbc:jtds:sqlserver://10.80.1.209:1433/fsis_production;instance=FPO;bufferMaxMemory=65536-->
+            <!--jdbc:jtds:sqlserver://10.80.1.209:1433/fsis_production;bufferMaxMemory=65536-->
             <!--######## FPO ON SITE DEV############-->
             <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_fpo_old;bufferMaxMemory=65536-->
             <!--########## PRODUCTION ############-->
             jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_production;bufferMaxMemory=65536
             <!--######## FPO ############-->
-            <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_fpo;bufferMaxMemory=65536-->
+            <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_dev;bufferMaxMemory=65536-->
             <!--######## SFI ############-->
             <!--jdbc:jtds:sqlserver://10.252.7.115:1433/fsis_sfitest;bufferMaxMemory=65536-->
 
@@ -40,7 +41,7 @@
         <!--FPO ON SITE 10.252.7.113-->
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">sa123</property>
-        <!-- 10.252.7.115 -->
+        <!-- 10.80.1.209 -->
         <!--<property name="hibernate.connection.username">sa</property>-->
         <!--<property name="hibernate.connection.password">P@ssw0rd</property>-->
 
@@ -107,10 +108,19 @@
         <mapping resource="ValidationRule.hbm.xml"/>
         <mapping resource="ValidationRuleLog.hbm.xml"/>
         <mapping resource="DefinedData.hbm.xml"/>
+        <mapping resource="DefinedUnstructured.hbm.xml"/>
+        <mapping resource="DefinedUnstructuredDetail.hbm.xml"/>
+        <!--<mapping resource="DefinedUnstructuredLog.hbm.xml"/>-->
+        <!--<mapping resource="DefinedUnstructuredDetailLog.hbm.xml"/>-->
+        <mapping resource="TransferBotLog.hbm.xml"/>
+
         <mapping resource="DefinedDataDetail.hbm.xml"/>
         <mapping resource="DefinedDataLog.hbm.xml"/>
         <mapping resource="DefinedDataDetailLog.hbm.xml"/>
         <mapping resource="ExportLog.hbm.xml"/>
+
+        <mapping resource="ExportUnstructureLog.hbm.xml"/>
+
         <mapping resource="FileUploadTransferLog.hbm.xml"/>
         <mapping resource="FrequencyConfig.hbm.xml"/>
         <mapping resource="FrequencyConfigDetail.hbm.xml"/>
@@ -157,5 +167,6 @@
         <mapping resource="UploadVersionUnStructured.hbm.xml"/>
         <mapping resource="QuestionAnswerGroup.hbm.xml"/>
         <mapping resource="QuestionAnswer.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>

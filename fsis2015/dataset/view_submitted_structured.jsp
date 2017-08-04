@@ -26,6 +26,7 @@
             thisForm.dataset.value = '';
             thisForm.group.value = '';
             thisForm.description.value = '';
+            thisForm.statusBot.value = '';
             thisForm.dsDateStart.value = '';
             thisForm.dsDateEnd.value = '';
             thisForm.createDateStart.value = '';
@@ -362,9 +363,10 @@
                                                         ${row.dsVersion.version}
                                                     </a>
                                                 </display:column>
-                                                <display:column title="Description" style="text-align:left;width:12%" headerClass="headerTable" sortable="true">
-                                                    <a href="javascript:" onclick="detail('${row.id}')">
-                                                        ${row.description}
+                                                <display:column title="BOT Status" style="text-align:left;width:5%" headerClass="headerTable" sortable="true">
+                                                    <a href="javascript:" onclick="popupBotStatus('${row.id}','_blank')">
+                                                            ${row.statusBot}
+                                                        <%--${row.description}--%>
                                                     </a>
                                                 </display:column>
                                                 <display:column title="Status" style="text-align:center;width:5%" headerClass="headerTable" sortable="true">
@@ -481,6 +483,10 @@
     function popupCrossResult(fileUploadId){
         //alert(fileUploadId);
         window.open("../dataset/cross_result.action?fileUploadId=" + fileUploadId,null,"height=580,width=780 ,resizable=1,scrollbars=1'");
+    }
+    function popupBotStatus(fileUploadId){
+        //alert(fileUploadId);
+        window.open("../dataset/bot_status.action?fileUploadId=" + fileUploadId,null,"height=580,width=780 ,resizable=1,scrollbars=1'");
     }
     function prepareZone(zone) {
         if (zone == 'G') {

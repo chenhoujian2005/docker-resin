@@ -34,6 +34,7 @@
             });
         }
 
+
         function findTitle(id, zone, keyName, keyValue, clearZones) {
             var vid = document.getElementById('unstructureVersionId').value;
             var unstructuredRight = document.getElementById('unstructuredRight').value;
@@ -41,6 +42,13 @@
                 prepareOption(zone, data, keyName, keyValue, clearZones);
             });
         }
+
+//        function findTitle(id, zone, keyName, keyValue, clearZones) {
+//            var unstructuredRight = document.getElementById('unstructuredRight').value;
+//            AjaxManager.findUnstructuredTitleByRight(id,unstructuredRight, function (data) {
+//                prepareOption(zone, data, keyName, keyValue, clearZones);
+//            });
+//        }
 
         function prepareOption(zone, data, keyName, keyValue, clearZones) {
             dwr.util.removeAllOptions(zone);

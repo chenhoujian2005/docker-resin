@@ -23,7 +23,7 @@
         </c:if>
 
             thisForm.status.value = '';
-            thisForm.unstructureVersionId.value = ''
+            thisForm.unstructureVersionId.value = '';
             thisForm.dataset.value = '';
             thisForm.description.value = '';
             thisForm.dsDateStart.value = '';
@@ -56,6 +56,13 @@
                 prepareOption(zone, data, keyName, keyValue, clearZones);
             });
         }
+
+//        function findTitle(id, zone, keyName, keyValue, clearZones) {
+//            var unstructuredRight = document.getElementById('unstructuredRight').value;
+//            AjaxManager.findUnstructuredTitleByRight(id,unstructuredRight, function (data) {
+//                prepareOption(zone, data, keyName, keyValue, clearZones);
+//            });
+//        }
 
         function prepareOption(zone, data, keyName, keyValue, clearZones) {
             dwr.util.removeAllOptions(zone);

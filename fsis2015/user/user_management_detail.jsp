@@ -417,6 +417,7 @@
                                                                         <td align="center"><s:checkbox name="kpiReportStructuredView" id="kpiReportStructuredView"/></td>
                                                                         <td></td>
                                                                     </tr>
+
                                                                     <tr class="bgGreen2">
                                                                         <td>&nbsp;&nbsp;&nbsp;> KPI UnStructured Report</td>
                                                                         <td align="center"><s:checkbox name="kpiReportUnstructuredView" id="kpiReportUnstructuredView"/></td>
@@ -425,6 +426,16 @@
                                                                     <tr class="bgGreen1">
                                                                         <td>&nbsp;&nbsp;&nbsp;> KPI Structured By Search</td>
                                                                         <td align="center"><s:checkbox name="kpiReportStructuredBySearchView" id="kpiReportStructuredBySearchView"/></td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr class="bgGreen2">
+                                                                        <td>&nbsp;&nbsp;&nbsp;> KPI Structured Report (BOT Status)</td>
+                                                                        <td align="center"><s:checkbox name="kpiReportStructuredBOTView" id="kpiReportStructuredBOTView"/></td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    <tr class="bgGreen1">
+                                                                        <td>&nbsp;&nbsp;&nbsp;> KPI Structured By Search (BOT Status)</td>
+                                                                        <td align="center"><s:checkbox name="kpiReportStructuredBySearchBOTView" id="kpiReportStructuredBySearchBOTView"/></td>
                                                                         <td></td>
                                                                     </tr>
                                                                     <tr class="bgGreen2">
@@ -454,6 +465,16 @@
                                                                         <td>&nbsp;&nbsp;&nbsp;> Export Data</td>
                                                                         <td align="center"><s:checkbox name="exportDataView" id="exportDataView"/></td>
                                                                         <td align="center"><s:checkbox name="exportDataManage" id="exportDataManage"/></td>
+                                                                    </tr>
+                                                                    <tr class="bgGreen2">
+                                                                        <td>&nbsp;&nbsp;&nbsp;> Defined Unstructured</td>
+                                                                        <td align="center"><s:checkbox name="definedDataUnstructuredView" id="definedDataUnstructuredView"/></td>
+                                                                        <td align="center"><s:checkbox name="definedDataUnstructuredManage" id="definedDataUnstructuredManage"/></td>
+                                                                    </tr>
+                                                                    <tr class="bgGreen1">
+                                                                        <td>&nbsp;&nbsp;&nbsp;> Export Unstructured</td>
+                                                                        <td align="center"><s:checkbox name="exportDataUnstructuredView" id="exportDataUnstructuredView"/></td>
+                                                                        <td align="center"><s:checkbox name="exportDataUnstructuredManage" id="exportDataUnstructuredManage"/></td>
                                                                     </tr>
                                                                     <tr class="bgGreen2">
                                                                         <td colspan="3">Configuration</td>
@@ -669,7 +690,7 @@
                             'submitStructuredView','viewSubmittedStructuredView','submitAdjustView','viewSumbittedAdjustView','submitUnstructuredView',
                             'viewSubmittedUnstructuredView','structuredTransferView','adjustStructuredTransferView','activityView','documentStatusView',
                             'documentStatusUnstructuredView','executiveReportView','executiveReportManage','kpiReportStructuredView','monitoringSubmitDatasetView',
-                            'monitoringUnstructuredView','definedDataView','definedDataManage','exportDataView','exportDataManage',
+                            'monitoringUnstructuredView','definedDataView','definedDataManage','exportDataView','exportDataManage','definedDataUnstructuredView','definedDataUnstructuredManage','exportDataUnstructuredView','exportDataUnstructuredManage',
                             'systemView','systemManage','frequencyView','frequencyManage','sendingWaiveView',
                             'sendingWaiveManage','helpView','helpManage','officialHolidayView','officialHolidayManage',
                             'noTransactionView','noTransactionManage','submitPublishDocumentView','viewPublishDocumentView','viewPublishDocumentManage',
@@ -684,7 +705,7 @@
                             'submitStructuredView','viewSubmittedStructuredView','submitAdjustView','viewSumbittedAdjustView','submitUnstructuredView',
                             'viewSubmittedUnstructuredView','structuredTransferView','adjustStructuredTransferView','activityView','documentStatusView',
                             'documentStatusUnstructuredView','executiveReportView','executiveReportManage','kpiReportStructuredView','monitoringSubmitDatasetView',
-                            'monitoringUnstructuredView','definedDataView','definedDataManage','exportDataView','exportDataManage',
+                            'monitoringUnstructuredView','definedDataView','definedDataManage','exportDataView','exportDataManage','definedDataUnstructuredView','definedDataUnstructuredManage','exportDataUnstructuredView','exportDataUnstructuredManage',
                             'systemView','systemManage','frequencyView','frequencyManage','sendingWaiveView',
                             'sendingWaiveManage','helpView','helpManage','submitPublishDocumentView','viewPublishDocumentView',
                             'viewPublishDocumentManage','viewPublishView','viewPublishManage','rulesValidationView','rulesValidationManage',

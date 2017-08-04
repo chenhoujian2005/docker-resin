@@ -127,7 +127,12 @@
                 type="string"
                 not-null="false"
                 />
-
+        <property
+                name="datasetId"
+                column="dataset_id"
+                type="string"
+                not-null="false"
+                />
         <many-to-one
                 name="dsTitle"
                 column="ds_title_id"

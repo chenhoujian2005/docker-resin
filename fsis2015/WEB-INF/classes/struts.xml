@@ -458,6 +458,9 @@
         <action name="cross_result" class="th.go.mof.fpo.dataset.CrossResultAction">
             <result>/dataset/cross_result.jsp</result>
         </action>
+        <action name="bot_status" class="th.go.mof.fpo.dataset.BotStatusAction">
+            <result>/dataset/bot_status.jsp</result>
+        </action>
     </package>
 
     <package name="logs" namespace="/logs" extends="struts-default">
@@ -472,6 +475,9 @@
 
         <action name="file_transfer_detail" class="th.go.mof.fpo.logs.FileTransferDetailAction">
             <result>/logs/file_transfer_detail.jsp</result>
+        </action>
+        <action name="file_transfer_detail_bot" class="th.go.mof.fpo.logs.FileTransferDetailBotAction">
+            <result>/logs/file_transfer_detail_bot.jsp</result>
         </action>
 
         <action name="adjust_structured_transfer" class="th.go.mof.fpo.logs.AdjustStructuredTransferAction">
@@ -535,14 +541,14 @@
         </action>
 
         <action name="kpi_report_structured_convert_to_excel"
-                class="th.go.mof.fpo.report.KpiReportStructuredConvertToExcelAction"
-                method="excel">
-            <result name="success" type="stream">
-                <param name="contentType">application/vnd.ms-excel</param>
-                <param name="inputName">excelStream</param>
-                <param name="contentDisposition">attachment;filename=%{filename}</param>
-            </result>
-        </action>
+                         class="th.go.mof.fpo.report.KpiReportStructuredConvertToExcelAction"
+                         method="excel">
+        <result name="success" type="stream">
+            <param name="contentType">application/vnd.ms-excel</param>
+            <param name="inputName">excelStream</param>
+            <param name="contentDisposition">attachment;filename=%{filename}</param>
+        </result>
+    </action>
         <action name="kpi_report_structured_by_search_convert_to_excel"
                 class="th.go.mof.fpo.report.KpiReportStructuredBySearchConvertToExcelAction"
                 method="excel">
@@ -552,6 +558,26 @@
                 <param name="contentDisposition">attachment;filename=%{filename}</param>
             </result>
         </action>
+
+        <action name="kpi_report_structured_convert_to_excel_bot"
+                class="th.go.mof.fpo.report.KpiReportStructuredConvertToExcelBotAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+        <action name="kpi_report_structured_by_search_convert_to_excel_bot"
+                class="th.go.mof.fpo.report.KpiReportStructuredBySearchConvertToExcelBotAction"
+                method="excel">
+            <result name="success" type="stream">
+                <param name="contentType">application/vnd.ms-excel</param>
+                <param name="inputName">excelStream</param>
+                <param name="contentDisposition">attachment;filename=%{filename}</param>
+            </result>
+        </action>
+
         <action name="kpi_report_unstructured_convert_to_excel"
                 class="th.go.mof.fpo.report.KpiReportUnStructuredConvertToExcelAction"
                 method="excel">
@@ -584,6 +610,16 @@
             <result name="success">/report/kpi_report_structured_by_search_new.jsp</result>
 
         </action>
+
+        <action name="kpi_report_structured_bot" class="th.go.mof.fpo.report.KpiReportStructuredBOTAction">
+            <result>/report/kpi_report_structured_bot.jsp</result>
+        </action>
+        <action name="kpi_report_structured_by_search_bot" class="th.go.mof.fpo.report.KpiReportStructuredBySearchNewAction">
+            <result name="input">/report/kpi_report_structured_by_search_bot.jsp</result>
+            <result name="success">/report/kpi_report_structured_by_search_bot.jsp</result>
+
+        </action>
+
         <action name="kpi_report_structured_summary" class="th.go.mof.fpo.report.KpiReportStructuredSummaryAction">
             <result>/report/kpi_report_structured_summary.jsp</result>
         </action>
@@ -621,7 +657,6 @@
             <interceptor name="validation"
                          class="org.apache.struts2.interceptor.validation.AnnotationValidationInterceptor"/>
         </interceptors>
-
         <action name="defined_data" class="th.go.mof.fpo.export.DefinedDataAction">
             <result>/export/defined_data.jsp</result>
         </action>
@@ -635,6 +670,29 @@
         </action>
         <action name="export_data" class="th.go.mof.fpo.export.ExportDataAction">
             <result>/export/export_data.jsp</result>
+        </action>
+        <action name="defined_unstructured" class="th.go.mof.fpo.export.DefinedUnstructuredAction">
+            <result>/export/defined_unstructured.jsp</result>
+        </action>
+        <action name="defined_unstructured_input" class="th.go.mof.fpo.export.DefinedUnstructuredInputAction">
+            <result>/export/defined_unstructured_input.jsp</result>
+            <result name="input" type="redirectAction">defined_unstructured_detail</result>
+            <result name="back" type="redirectAction">defined_unstructured</result>
+        </action>
+        <action name="defined_unstructured_detail" class="th.go.mof.fpo.export.DefinedUnstructuredDetailAction">
+            <result name="input">/export/defined_unstructured_detail.jsp</result>
+            <result name="success">/export/defined_unstructured_detail.jsp</result>
+            <result name="back" type="redirectAction">defined_unstructured</result>
+        </action>
+        <action name="defined_unstructured_detail_input" class="th.go.mof.fpo.export.DefinedUnstructuredDetailInputAction">
+            <!--<result name="input">/export/defined_unstructured_detail_input.jsp</result>-->
+            <result>/export/defined_unstructured_detail_input.jsp</result>
+            <result name="save" type="redirectAction">defined_unstructured_detail</result>
+            <result name="back" type="redirectAction">defined_unstructured_detail</result>
+        </action>
+        <action name="export_unstructured" class="th.go.mof.fpo.export.ExportUnstructuredAction">
+            <result name="input">/export/export_unstructured.jsp</result>
+            <result name="success">/export/export_unstructured.jsp</result>
         </action>
     </package>
 

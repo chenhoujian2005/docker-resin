@@ -168,6 +168,15 @@
                             <c:if test="${sessionScope.menuAuthentication.kpiReportStructuredBySearchView}">
                               ,{ "data" : "KPI Structured By Search", "metadata" :{id:"../report/kpi_report_structured_by_search.action"} }
                             </c:if>
+
+                            //TODO: add menu kpi
+                            <c:if test="${sessionScope.menuAuthentication.kpiReportStructuredBOTView}">
+                              ,{ "data" : "KPI Structured Report (BOT Status)", "metadata" :{id:"../report/kpi_report_structured_bot.action"} }
+                            </c:if>
+                            <c:if test="${sessionScope.menuAuthentication.kpiReportStructuredBySearchBOTView}">
+                              ,{ "data" : "KPI Structured By Search (BOT Status)", "metadata" :{id:"../report/kpi_report_structured_by_search_bot.action"} }
+                            </c:if>
+
                             <c:if test="${sessionScope.menuAuthentication.kpiReportUnstructuredView}">
                                ,{ "data" : "KPI UnStructured Report", "metadata" :{id:"../report/kpi_report_unstructured.action"} }
                             </c:if>
@@ -183,7 +192,7 @@
                             ]
                  }
                 </c:if>
-                <c:if test="${sessionScope.menuAuthentication.definedDataView || sessionScope.menuAuthentication.exportDataView}">
+                <c:if test="${sessionScope.menuAuthentication.definedDataView || sessionScope.menuAuthentication.exportDataView || sessionScope.menuAuthentication.definedDataUnstructuredView || sessionScope.menuAuthentication.exportDataUnstructuredView}">
                , { "data" : "Export Data", "metadata" : { id : "#" },
                   "children" : [
                         <c:if test="${sessionScope.menuAuthentication.definedDataView}">
@@ -192,6 +201,12 @@
                         <c:if test="${sessionScope.menuAuthentication.exportDataView}">
                             ,{ "data" : "Export Data", "metadata" :{id:"../export/export_data.action"} }
                         </c:if>
+                      <c:if test="${sessionScope.menuAuthentication.definedDataUnstructuredView}">
+                        ,{ "data" : "Defined Unstructured", "metadata" :{id:"../export/defined_unstructured.action"} }
+                      </c:if>
+                      <c:if test="${sessionScope.menuAuthentication.exportDataUnstructuredView}">
+                        ,{ "data" : "Export Unstructured", "metadata" :{id:"../export/export_unstructured.action"} }
+                      </c:if>
                                 ]
                  }
                 </c:if>

@@ -205,6 +205,11 @@
                ${row.status}
             </a>
          </display:column>
+        <display:column title="BOT Status" headerClass="headerTable" sortable="true" style="width:8%;text-align:center">
+            <a href="javascript:" onclick="detail_bot(${row.id})">
+                    ${row.statusBot}
+            </a>
+        </display:column>
          <%--<display:column title="Download" headerClass="headerTable" sortable="true" style="width:8%;text-align:center">--%>
              <%--<a href="../downloadFile2.sl?uploadFileId=${row.id}" title="Click here to download.">--%>
                <%--<img src="../images/download_icon2.png" style="border:none" width="16" height="16">--%>
@@ -302,7 +307,10 @@
     });
 
     function detail(id){
-      window.open('file_transfer_detail.action?id='+ id,null,"height=700,width=900 ,resizable=1,scrollbars=1'");
+        window.open('file_transfer_detail.action?id='+ id,null,"height=700,width=900 ,resizable=1,scrollbars=1'");
+    }
+    function detail_bot(id){
+        window.open('file_transfer_detail_bot.action?id='+ id,null,"height=700,width=900 ,resizable=1,scrollbars=1'");
     }
 
 </script>

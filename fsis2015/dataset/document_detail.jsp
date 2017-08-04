@@ -63,10 +63,12 @@
     </tr>
     <tr>
         <td align="right">
+            <c:if test="${requestScope.dsName ne 'DS_SMD' and requestScope.dsName ne 'DS_SMP'}">
             <a href="../downloadFile.sl?uploadVersion=${requestScope.uploadVersion.id}&documentType=${requestScope.fileUpload.documentType}"
                title="Click here to download.">
                 <img src="../images/download.gif" width="16" height="16" border="0">Download&nbsp;</ime>
             </a>
+            </c:if>
         </td>
     </tr>
 </table>
@@ -136,7 +138,23 @@
 
 <tr class="bgGreen1">
     <td height=24 align="right"><strong>File name : </strong></td>
-    <td>${requestScope.uploadVersion.fileName}</td>
+    <td>
+    <c:if test="${requestScope.dsName eq 'DS_SMD' or requestScope.dsName eq 'DS_SMP'}">
+        <a href="../downloadFile.sl?uploadVersion=${requestScope.uploadVersionSMEs[0].id}&documentType=${requestScope.fileUpload.documentType}">
+        ${requestScope.uploadVersionSMEs[0].fileName}</a><br/>
+        <a href="../downloadFile.sl?uploadVersion=${requestScope.uploadVersionSMEs[1].id}&documentType=${requestScope.fileUpload.documentType}">
+        ${requestScope.uploadVersionSMEs[1].fileName}</a><br/>
+        <a href="../downloadFile.sl?uploadVersion=${requestScope.uploadVersionSMEs[2].id}&documentType=${requestScope.fileUpload.documentType}">
+        ${requestScope.uploadVersionSMEs[2].fileName}</a><br/>
+        <a href="../downloadFile.sl?uploadVersion=${requestScope.uploadVersionSMEs[3].id}&documentType=${requestScope.fileUpload.documentType}">
+        ${requestScope.uploadVersionSMEs[3].fileName}</a><br/>
+        <a href="../downloadFile.sl?uploadVersion=${requestScope.uploadVersionSMEs[4].id}&documentType=${requestScope.fileUpload.documentType}">
+        ${requestScope.uploadVersionSMEs[4].fileName}</a>
+    </c:if>
+    <c:if test="${requestScope.dsName ne 'DS_SMD' and requestScope.dsName ne 'DS_SMP'}">
+        ${requestScope.uploadVersion.fileName}
+    </c:if>
+    </td>
 </tr>
 <tr class="bgGreen2">
     <td height=24 align="right"><strong>Sender Information : </strong></td>
@@ -312,6 +330,7 @@
 <tr>
     <td height="30" align="center">
         <c:if test="${requestScope.fileUpload.documentType eq 'STR'}">
+        <c:if test="${requestScope.dsName ne 'DS_SMD' and requestScope.dsName ne 'DS_SMP'}">
             <button name="view" value="View" class="button" style="height:18px;width:70px;vertical-align:bottom;"
                     onclick="detail('${requestScope.uploadVersion.id}','${requestScope.fileUpload.dsTitle3}','${requestScope.fileUpload.dsVersion.id}');">
                 View
@@ -319,6 +338,7 @@
             <a class="button" style="height:18px;width:150px;vertical-align:bottom;"
                href="../convertToExcel.sl?uploadVersionId=${requestScope.uploadVersion.id}&dsVersionId=${requestScope.fileUpload.dsVersion.id}&reportType=${requestScope.excelPath}">
                 &nbsp;Convert To Excel&nbsp;</a>
+        </c:if>
             <c:if test="${requestScope.canApproveAdjust}">
                 <s:submit value="Adjust Approve" method="approve" cssClass="button" cssStyle="width:120px"
                           onclick="return confirmApprove();"/>
@@ -345,7 +365,7 @@
     </td>
     <td>&nbsp;</td>
 </tr>
-<c:if test="${not requestScope.canApproveReport and not requestScope.alreadyApproveReport and requestScope.fileUpload.documentType eq 'STR'}">
+<c:if test="${requestScope.status ne null and not requestScope.canApproveReport and not requestScope.alreadyApproveReport and requestScope.fileUpload.documentType eq 'STR'}">
     <tr>
         <td>
             <table width="100%">

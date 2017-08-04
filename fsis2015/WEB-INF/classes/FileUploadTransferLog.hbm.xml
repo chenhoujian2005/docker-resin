@@ -23,7 +23,14 @@
 			type="string"
 			not-null="false"
 			length="3"
-		/>
+			/>
+		<property
+				name="botStatus"
+				column="status_bot"
+				type="string"
+				not-null="false"
+				length="3"
+				/>
 		<property
 			name="description"
 			column="description"
@@ -37,6 +44,13 @@
 			not-null="false"
 			length="23"
 		/>
+		<property
+				name="createDateBot"
+				column="create_date_bot"
+				type="timestamp"
+				not-null="false"
+				length="23"
+				/>
 		<property
 			name="createBy"
 			column="create_by"

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--Qoixk5C13s09uqL66sHpx/2KgLVAMEnj-->
+        <!-- local connection properties -->
+        <property name="hibernate.connection.url">
+            <!--jdbc:jtds:sqlserver://eak-nb:1433/fsis2010_test-->
+            <!--jdbc:jtds:sqlserver://eak-nb:1433/fsis2010_production-->
+            <!--jdbc:jtds:sqlserver://localhost:1433/fsis2010_forfpotest-->
+
+            <!--jdbc:jtds:sqlserver://203.150.38.203:1433/fsis2010_production-->
+            <!--jdbc:jtds:sqlserver://127.0.0.1:1433/fsis_fortest-->
+            jdbc:jtds:sqlserver://127.0.0.1:1433/fsis2010_production
+        </property>
+        <property name="hibernate.connection.driver_class">
+            net.sourceforge.jtds.jdbc.Driver
+        </property>
+        <property name="hibernate.connection.username">sa</property>
+        <!--<property name="hibernate.connection.password">root</property>-->
+        <!--<property name="hibernate.connection.password">bmasec#2</property>-->
+        <property name="hibernate.connection.password">sa123</property>
+
+        <property name="c3p0.acquire_increment">1</property>
+        <property name="c3p0.idle_test_period">100</property>
+        <!-- seconds -->
+        <property name="c3p0.max_size">100</property>
+        <property name="c3p0.max_statements">0</property>
+        <property name="c3p0.min_size">10</property>
+        <property name="c3p0.timeout">100</property>
+        <!-- seconds -->
+        <!-- DEPRECATED very expensive property name="c3p0.validate>-->
+
+         <!--open this tag when use encryp -->
+        <!--<property name="connection.provider_class">
+	      org.jasypt.hibernate.connectionprovider.EncryptedPasswordC3P0ConnectionProvider
+	    </property>-->
+	    <!--<property name="connection.encryptor_registered_name">
+	      stringEncryptor
+	    </property>-->
+
+        <property name="cache.provider_class">
+            org.hibernate.cache.OSCacheProvider
+        </property>
+        <property name="dialect">
+            org.hibernate.dialect.SQLServerDialect
+        </property>
+        <property name="hibernate.show_sql">false</property>
+        <property name="hibernate.transaction.factory_class">
+            org.hibernate.transaction.JDBCTransactionFactory
+        </property>
+        <!-- session properties -->
+        <property name="hibernate.current_session_context_class">
+            org.hibernate.context.ThreadLocalSessionContext
+        </property>
+        <!--<property name="current_session_context_class">thread</property>-->
+
+        <mapping resource="ActivityLog.hbm.xml"/>
+		<mapping resource="Configuration.hbm.xml"/>
+		<mapping resource="DsTitle.hbm.xml"/>
+		<mapping resource="DsVersion.hbm.xml"/>
+		<mapping resource="FileUpload.hbm.xml"/>
+		<mapping resource="HelpDoc.hbm.xml"/>
+		<mapping resource="News.hbm.xml"/>
+		<mapping resource="ReportType.hbm.xml"/>
+		<mapping resource="SendingWaive.hbm.xml"/>
+		<mapping resource="SendLog.hbm.xml"/>
+		<mapping resource="Sfi.hbm.xml"/>
+		<mapping resource="UploadVersion.hbm.xml"/>
+		<mapping resource="UserAuthentication.hbm.xml"/>
+        <mapping resource="Government.hbm.xml"/>
+        <mapping resource="IsicBot.hbm.xml"/>
+        <mapping resource="SfiBranch.hbm.xml"/>
+        <mapping resource="Classification.hbm.xml"/>
+        <mapping resource="ClassificationItem.hbm.xml"/>
+        <mapping resource="CrossValidation.hbm.xml"/>
+        <mapping resource="DocumentStatusLog.hbm.xml"/>
+        <mapping resource="ValidationRule.hbm.xml"/>
+        <mapping resource="DefinedData.hbm.xml"/>
+        <mapping resource="DefinedDataDetail.hbm.xml"/>
+        <mapping resource="ExportLog.hbm.xml"/>
+        <mapping resource="FileUploadTransferLog.hbm.xml"/>
+        <mapping resource="FrequencyConfig.hbm.xml"/>
+        <mapping resource="FrequencyConfigDetail.hbm.xml"/>
+        <mapping resource="FrequencyConfigMain.hbm.xml"/>
+        <mapping resource="OfficialHoliday.hbm.xml"/>
+        <mapping resource="KpiDefinedData.hbm.xml"/>
+        <mapping resource="KpiDefinedDataDetail.hbm.xml"/>
+        <mapping resource="NoTransaction.hbm.xml"/>
+        <mapping resource="PassFirst.hbm.xml"/>
+        <mapping resource="CrossResultMaster.hbm.xml"/>
+        <mapping resource="CrossResultSlave.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

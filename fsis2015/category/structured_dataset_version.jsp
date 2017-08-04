@@ -51,6 +51,7 @@
 <s:hidden name="subTitleHidden"/>
 <s:hidden name="versionHidden"/>
 <s:hidden name="change"/>
+<%--<s:hidden name="datasetId"/>--%>
     <table width="98%" border="0" cellspacing="0" cellpadding="0" align="center">
         <tr>
             <td>
@@ -120,6 +121,13 @@
                                                 </td>
                                             </tr>
                                             <tr class="bgGreen2">
+                                                <td class="label" width="25%">Dataset ID :</td>
+                                                <td colspan="2" width="65%">
+                                                    <s:textfield name="datasetId" id="datasetId" maxLength="10"/>
+                                                </td>
+
+                                            </tr>
+                                            <tr class="bgGreen1">
                                                 <td class="label">Manual :</td>
                                                 <td colspan="2">
                                                     <s:file name="manualUpload" size="49"/>
@@ -130,7 +138,7 @@
                                                     </c:if>
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen1">
+                                            <tr class="bgGreen2">
                                                 <td class="label">Data Entry Path :</td>
                                                 <td colspan="2">
                                                     <s:file name="dataEntryUpload" size="49"/>
@@ -141,7 +149,7 @@
                                                     </c:if>
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen2">
+                                            <tr class="bgGreen1">
                                                 <td class="label">XSD Path :</td>
                                                 <td colspan="2">
                                                     <s:file name="xsdUpload" size="49"/>
@@ -152,19 +160,19 @@
                                                     </c:if>
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen1">
+                                            <tr class="bgGreen2">
                                                 <td class="label">Basic Validation Script :</td>
                                                 <td colspan="2">
                                                     <s:textarea rows="15" cssStyle="width:440px" name="basicValidationScript" />
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen2">
+                                            <tr class="bgGreen1">
                                                 <td class="label">Complex Validation Script :</td>
                                                 <td colspan="2">
                                                     <s:textarea rows="15" cssStyle="width:440px" name="complexValidationScript" />
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen1">
+                                            <tr class="bgGreen2">
                                                 <td class="label">Cross Validation Script :</td>
                                                 <td colspan="2">
                                                     <c:if test="${not empty requestScope.id}">
@@ -172,7 +180,7 @@
                                                     </c:if>    
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen2">
+                                            <tr class="bgGreen1">
                                                 <td class="label">Effective Date From <span class="require_field">*</span>:</td>
                                                 <td colspan="2">
                                                     <s:textfield name="startDate" id="dateFrom" readonly="true" size="8"/>
@@ -182,7 +190,7 @@
                                                          align="absmiddle">
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen1">
+                                            <tr class="bgGreen2">
                                                 <td class="label">Effective Date To <span class="require_field">*</span>:</td>
                                                 <td colspan="2">
                                                     <s:textfield name="endDate" id="endDate" readonly="true" size="8"/>
@@ -192,7 +200,7 @@
                                                          align="absmiddle">
                                                 </td>
                                             </tr>
-                                            <tr class="bgGreen2">
+                                            <tr class="bgGreen1">
                                                 <td class="label">Enable :</td>
                                                 <td colspan="2">
                                                     <s:checkbox name="enable"/>

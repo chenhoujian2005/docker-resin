@@ -134,7 +134,7 @@
                 column="structured_right"
                 type="string"
                 not-null="false"
-                length="256"
+                length="500"
                 />
         <property
                 name="unStructureRight"

@@ -155,7 +155,27 @@
                 not-null="false"
                 length="512"
                 />
-
+    <!--<many-to-one-->
+            <!--name="unTitle"-->
+            <!--column="unstructured_title_id"-->
+            <!--class="UnstructureTitle"-->
+            <!--not-null="false"-->
+            <!-->-->
+    <!--</many-to-one>-->
+            <!--<many-to-one-->
+            <!--name="sfi"-->
+            <!--column="sfi_id"-->
+            <!--class="Sfi"-->
+            <!--not-null="false"-->
+            <!-->-->
+    <!--</many-to-one>-->
+            <!--<many-to-one-->
+                    <!--name="user"-->
+                    <!--column="user_id"-->
+                    <!--class="UserAuthentication"-->
+                    <!--not-null="false"-->
+                    <!-->-->
+            <!--</many-to-one>-->
 
     </class>
 </hibernate-mapping>

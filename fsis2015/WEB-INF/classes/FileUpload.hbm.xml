@@ -72,6 +72,13 @@
                 length="3"
                 />
         <property
+                name="statusBot"
+                column="status_bot"
+                type="string"
+                not-null="false"
+                length="3"
+                />
+        <property
                 name="documentType"
                 column="document_type"
                 type="string"
